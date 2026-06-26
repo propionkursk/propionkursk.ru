@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ПроПионыКурск</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --primary: #f4f4f4;
+      --secondary: #eeeeee;
+      --highlight: #f9f9f9;
+      --text: #333333;
+      --accent: #999999;
+      --radius: 24px;
+      --font-main: Arial, sans-serif;
+    }
+    body {
+      margin: 0;
+      font-family: var(--font-main);
+      background-color: var(--bg);
+      color: var(--text);
+    }
+    header {
+      background-color: var(--primary);
+      padding: 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header nav a {
+      margin: 0 15px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1240px;
+      margin: auto;
+    }
+    h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    .card {
+      background-color: var(--highlight);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .product {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .product .img {
+      background-color: #e0e0e0;
+      height: 200px;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 20px;
+    }
+    form input, form textarea, form button {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 12px;
+      border-radius: var(--radius);
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    form button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    footer {
+      background-color: var(--secondary);
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+  </style>
+
+<style>
+@media (max-width: 768px) {
+  header nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  section {
+    padding: 30px 16px !important;
+  }
+
+  .product-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px;
+  }
+
+  .product-card {
+    font-size: 14px;
+  }
+
+  .product-card h3 {
+    font-size: 16px;
+  }
+
+  .product-card summary {
+    font-size: 14px;
+  }
+
+  .hero-overlay {
+    font-size: 20px !important;
+    padding: 10px 16px !important;
+  }
+}
+.product-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:20px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.product-card{
+  background:#fff;
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+  text-align:center;
+}
+
+.product-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:12px;
+}
+
+.product-card h3{
+  font-size:16px;
+  margin:10px 0;
+}
+
+.product-card button{
+  padding:8px 12px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  background:#eee;
+}
+
+.desc{
+  display:none;
+  margin-top:10px;
+  font-size:14px;
+  color:#444;
+}
+
+@media(max-width:1000px){
+  .product-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+@media(max-width:600px){
+  .product-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+  <header>
+  <nav style="display: flex; justify-content: flex-end;">
+  <a href="#about">О нас</a>
+  <a href="#products">Каталог</a>
+  <a href="#news">Новости</a>
+  <a href="#reviews">Отзывы</a>
+  <a href="#contacts">Контакты</a>
+</nav>
+</header>
+
+<script>
+function toggle(btn){
+  const desc = btn.nextElementSibling;
+  desc.style.display =
+    desc.style.display === "block" ? "none" : "block";
+}
+</script>
+
+  
+
+
+
+<!-- Перед разделом "О нас" -->
+<div class="main-banner">
+  <img src="img/shapka.png" alt="Добро пожаловать в наш цветущий уголок!">
+  <div class="banner-title">Добро пожаловать в наш цветущий уголок!</div>
+</div>
+
+<style>
+.main-banner {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px 0 #eee;
+}
+.main-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: brightness(0.96);
+}
+.banner-title {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%,-50%);
+  background: rgba(255,255,255,0.70);
+  padding: 14px 32px;
+  border-radius: 16px;
+  font-size: 2.2rem;
+  color: #363636;
+  font-weight: 600;
+  letter-spacing: .02em;
+  text-align: center;
+  box-shadow: 0 2px 8px 0 #eee;
+}
+@media (max-width:600px){
+  .banner-title { font-size: 1.2rem; padding: 8px 12px;}
+}
+</style>
+
+
+
+
+<section id="about">
+    <h2>О нас</h2>
+    <div class="card">
+      <p>Мы специализируемся на продаже делёнок элитных пионов, выращенных с заботой и вниманием в нашем собственном саду. В нашем ассортименте — только проверенные сорта, крепкие и здоровые растения, которые радуют пышным цветением.<br>
+<br>Каждая делёнка проходит тщательный отбор — мы предлагаем только то, что выбрали бы для своего участка. Заказы аккуратно упаковываем и отправляем почтой по всей России.<br>
+<br>Для наших покупателей — регулярные акции, подарки и интересные предложения.
+<br>Всегда готовы помочь с выбором, проконсультировать по посадке и уходу за пионами.<br>
+<br>Присоединяйтесь к сообществу любителей пионов — сделаем ваш сад ярче и красивее вместе!</p>
+    </div>
+  </section>
+
+  
+
+<section id="products">
+  <h2>Каталог</h2>
+
+  <div class="product-grid">
+  
+   <div class="product-card">
+    <img src="img/renato_rozovyj.jpg">
+   <h3>Ренато Розовый</h3>
+   
+    <button onclick="toggle(this)">Описание</button>
+         <div class="desc">Сорт пиона молочноцветкового (Paeonia lactiflora), известный своими крупными, махровыми цветками насыщенного розово-красного цвета. Цветки этого сорта достигают в диаметре 14-16 см и обладают легким ароматом. Куст "Ренато" компактный, прямостоячий, высотой 60-80 см, с темно-зелеными листьями. Цветение обильное и продолжительное, начинается в начале июня. Сорт морозостойкий и устойчив к заболеваниям.</div>
+    </div>
+	
+	<div class="product-card">  
+	<img src="img/bartzella.jpg"> 
+    <h3>Бартзелла</h3>
+       <button onclick="toggle(this)">Описание</button>
+      <div class="desc">Гибридный сорт пионов. Раскидистые кусты с прочными стеблями. Листья ажурные, плотные, тёмно-зелёного оттенка. Роскошные жёлтые бутоны, с красными штрихами на основании лепестков дарят тонкий благоухающий аромат. Покупая корневища пиона (Ито-гибрида) Бартзелла, вы получите цветы, которые будут радовать вас шикарными цветами около 4 недель.</div>
+    </div>
+
+  <div class="product-card">  
+  <img src="img/hillary.png">
+  <h3>Хиллари</h3>
+    <button onclick="toggle(this)">Описание</button>
+      <div class="desc">Пион ИТО-гибрид. Полумахровый, ранний сорт, выведенный в США. Его цветки меняют окраску в течение цветения от красноватой до желто-коричневой, с ярко-розовым центром. Сорт отличается прочными стеблями, устойчивым ароматом и высокой зимостойкостью.</div>
+    </div>
+
+  <div class="product-card">  
+  <img src="img/prairie_charm.jpg">
+  <h3>Прейри Чарм</h3>
+    <button onclick="toggle(this)">Описание</button>
+      <div class="desc">Пион ИТО-гибрид. Это настоящее сокровище для сада, сочетающее в себе лучшие качества травянистых и древовидных пионов. Его роскошные цветки поражают воображение своей красотой и необычной окраской: нежно-лимонные лепестки с ярким малиновым центром создают потрясающий контраст. Крепкие стебли надежно удерживают крупные цветы, которые не поникают даже после дождя. Куст отличается компактностью и аккуратностью, а глянцевая темно-зеленая листва остается декоративной до самой осени. ‘Прейри Чарм’ неприхотлив в уходе, устойчив к болезням и вредителям, а также обладает высокой зимостойкостью. Этот сорт станет настоящим украшением любого сада, привлекая внимание своей изысканной красотой и длительным цветением.</div>
+    </div>
+
+  <div class="product-card">
+  <img src="img/command_performance.jpg">
+  <h3>Команд Перфоманс</h3>
+    <button onclick="toggle(this)">Описание</button>
+      <div class="desc">Популярный сорт молочноцветкового пиона, известный своими крупными, махровыми цветками, которые меняют цвет от красного к розово-оранжевому в процессе цветения. Он отличается прочными стеблями, но иногда они могут изгибаться под тяжестью крупных цветков. Этот сорт хорошо подходит для срезки и эффектно смотрится в саду, как в одиночных, так и в групповых посадках.</div>
+    </div>
+
+  <div class="product-card">
+  <img src="img/alexander_fleming.jpg">
+  <h3>Александр Флеминг</h3>
+    <button onclick="toggle(this)">Описание</button>
+       <div class="desc">Махровый, розовидный сорт с крупными цветками темно-розового цвета с фиолетовым оттенком, края лепестков светлее. Сорт выведен в Голландии, назван в честь шотландского микробиолога, открывшего пенициллин. Цветки имеют приятный сладковатый аромат, а кусты достигают высоты 80-90 см. Сорт морозостойкий, хорошо адаптируется к разным климатическим условиям.</div>
+    </div>
+
+  <div class="product-card">
+  <img src="img/jadwiga.jpg">
+  <h3>Ядвига</h3>
+    <button onclick="toggle(this)">Описание</button>
+     <div class="desc">Это сорт молочноцветкового пиона, известный своими крупными, густомахровыми цветками насыщенного розового цвета с серебристым оттенком на кончиках лепестков. Цветы имеют хорошо сформированную бокаловидную форму и приятный аромат. Куст достигает высоты 80-90 см и отличается прочными стеблями, которые хорошо держат крупные цветки.</div>
+    </div>
+	
+  <div class="product-card"> 
+  <img src="img/white_cap.jpg">
+  <h3>Уайт Кэп</h3>
+    <button onclick="toggle(this)">Описание</button>
+      <div class="desc">Сорт травянистого пиона, известный своей красотой и неприхотливостью. Он имеет крупные, полумахровые цветки японской формы, с темно-розовыми внешними лепестками и белыми стаминодиями в центре, создающими яркий контраст. Куст достаточно высокий, достигает 80-100 см, с прочными стеблями, и хорошо держит форму. Цветение обильное и продолжительное, в средние сроки, с приятным ароматом. Сорт морозостойкий, засухоустойчивый и устойчив к болезням.</div>
+    </div>
+
+  <div class="product-card">
+  <img src="img/myrtle_gentry.jpg">
+  <h3>Миртл Джентри</h3>
+    <button onclick="toggle(this)">Описание</button>
+      <div class="desc">Травянистый пион, известный своим поздним цветением, крупными махровыми цветками розовидной формы и сильным ароматом, напоминающим чайную розу.</div>
+    </div>
+
+  <div class="product-card">
+  <img src="img/vogue.jpg">
+  <h3>Вог</h3>
+    <button onclick="toggle(this)">Описание</button>
+      <div class="desc">Сорт травянистого пиона, известный своими крупными, махровыми цветками, которые меняют окраску от розовой с серебристым оттенком до почти белой по мере распускания. Этот сорт отличается обильным цветением, приятным ароматом и относительно высокой устойчивостью к заболеваниям.</div>
+    </div>
+
+ <div class="product-card">
+ <img src="img/dinner_plate.jpg">
+  <h3>Диннер Плейт</h3>
+    <button onclick="toggle(this)">Описание</button>
+     <div class="desc">Сорт пиона молочноцветкового, известный своими огромными, махровыми цветами, которые действительно напоминают обеденную тарелку по размеру. Цветы этого сорта розовые, с оттенками лосося и перламутра, а также могут иметь нежные пастельно-розовые тона в конце цветения. Сорт очень популярен благодаря своей красоте и размеру цветков, а также относительной неприхотливости в выращивании.</div>
+    </div>
+
+  <div class="product-card">
+  <img src="img/kansas.jpg">
+  <h3>Канзас</h3>
+    <button onclick="toggle(this)">Описание</button>
+      <div class="desc">Сорт пиона молочноцветкового, известный своими крупными, махровыми, розово-красными цветами, которые часто называют цветами фуксии или карминно-розовыми с сиреневым оттенком. Цветки имеют форму, напоминающую розовидную, и могут достигать до 20 см в диаметре. "Канзас" цветет в период с мая по июнь и обладает приятным ароматом.</div>
+    </div>
+
+  <div class="product-card">
+  <img src="img/miss_america.jpg">
+  <h3>Мисс Америка </h3>
+    <button onclick="toggle(this)">Описание</button>
+      <div class="desc">Сорт молочноцветкового пиона, известный своими крупными, полумахровыми, белоснежными цветками с яркой желтой сердцевиной. Он отличается ранним и обильным цветением, прочными стеблями и приятным ароматом. Этот сорт морозостоек и засухоустойчив, что делает его подходящим для различных климатических условий.</div>
+    </div>
+
+
+  <div class="product-card">
+  <img src="img/red_charm.jpg">
+  <h3>Ред Шарм</h3>
+    <button onclick="toggle(this)">Описание</button>
+      <div class="desc">Сорт пиона с крупными, махровыми цветками темно-красного или малинового цвета. Он известен своей ранней и продолжительной фазой цветения, которая может длиться до полутора месяцев. Соцветия достигают диаметра до 20 см.</div>
+    </div>
+
+
+ <div class="product-card">
+ <img src="img/coral_charm.jpg">
+  <h3>Корал Шарм</h3>
+    <button onclick="toggle(this)">Описание</button>
+      <div class="desc">Сорт травянистого пиона, известный своими крупными полумахровыми цветками кораллового цвета, которые меняют оттенок по мере распускания. Вначале цветки имеют ярко-лососевый оттенок, затем постепенно переходят в кораллово-персиковый, а в конце цветения могут приобретать кремовый или молочный оттенок. Куст растения достигает высоты 90-100 см, с прочными стеблями и темно-зеленой листвой. "Корал Шарм" относится к среднеранним сортам и отлично подходит для срезки, а также для одиночных и групповых посадок в саду.</div>
+    </div>
+
+
+  <div class="product-card">
+  <img src="img/red_magic.jpg">
+  <h3>Ред Мэджик</h3>
+    <button onclick="toggle(this)">Описание</button>
+      <div class="desc">Сорт молочноцветкового пиона, который отличается крупными, махровыми, шаровидными цветками темно-красного, вишнево-красного или клюквенного цвета. Цветки имеют приятный аромат и состоят из множества лепестков, часто с волнистыми краями. Кусты этого пиона достигают высоты 70-90 см, с густой темно-зеленой листвой.</div>
+    </div>
+
+  <div class="product-card">
+  <img src="img/white.jpg">
+  <h3>Белый пион</h3>
+    <button onclick="toggle(this)">Описание</button>
+      <div class="desc">Цветы с крупными, махровыми цветками, чаще всего снежно-белого цвета, но могут иметь и кремовый оттенок в центре. Они славятся своим приятным ароматом и декоративностью, что делает их популярными в садовом дизайне и флористике. Белые пионы символизируют чистоту, невинность и благородство.</div>
+   </div>
+
+ <div class="product-card">
+ <img src="img/julia_rose.jpg">
+  <h3>Джулия Роуз</h3>
+    <button onclick="toggle(this)">Описание</button>
+      <div class="desc">ИТО гибрид — цветки крупные, простые или полумахровые, меняющие окраску от малиново-розовых при роспуске до кремово-жёлтых в конце цветения. Бутоны распускаются не одновременно, поэтому на растении можно наблюдать цветки с разной окраской. Высота куста 90 см. Диаметр цветка до 20 см. Стебли крепкие, прочные. Листья декоративные, темно-зеленые, резные. Период цветения — конец июня.</div>
+   </div>
+
+
+  </div>
+</section>
+
+
+
+  <section id="news">
+    <h2>Новости</h2>
+    <div class="card">
+      <p>Добро пожаловать!</p>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <h2>Отзывы</h2>
+    <div class="card">
+      <p>«Милая и дружелюбная хозяйка продаёт прекрасные пионы! Много выбора на любой вкус. Любители пионов оценят данное место и вернутся за новыми видами снова! Рекомендую!</p>
+    </div>
+  </section>
+
+  <section id="contacts">
+  <h2>Контакты</h2>
+  <div class="card">
+    <p><strong>Телефон:</strong> 
+      <a href="tel:+79151128893" target="_blank" rel="noopener noreferrer">+7 915 112 8893</a>
+    </p>
+    <p><strong>WhatsApp:</strong> 
+      <a href="https://wa.me/79151128893" target="_blank" rel="noopener noreferrer">написать</a>
+    </p>
+    <p><strong>Telegram:</strong> 
+    <a href="https://t.me/Nadezhdapion" target="_blank" rel="noopener noreferrer">написать</a>
+    </p>
+    <p><strong>VK:</strong> 
+      <a href="https://vk.com/propionkursk" target="_blank" rel="noopener noreferrer">написать</a>
+    </p>
+    <p><strong>Email:</strong> 
+  <a href="mailto:propionkursk@yandex.ru" target="_blank" rel="noopener noreferrer">
+    propionkursk@yandex.ru
+  </a>
+</p>
+    <p><strong>Адрес:</strong> г. Курск, 1-ая Моква</p>
+  </div>
+  </section>
+
+
+  <footer>
+    &copy; 2025 ПроПионыКурск — Все права защищены.
+  </footer>
+
+<section id="privacy" style="padding: 40px 20px; max-width: 1240px; margin: auto;">
+  <h2 style="font-size: 28px; margin-bottom: 20px;">Политика конфиденциальности</h2>
+  <p style="font-size: 14px; line-height: 1.6;">
+   Настоящая политика конфиденциальности определяет порядок обработки и защиты персональных данных, которые могут быть переданы пользователями при использовании контактной информации, размещённой на сайте.
+   Мы размещаем на сайте контактные данные (имя, номер телефона, email, мессенджеры), которые вы можете использовать для связи с нами. При использовании этих контактов вы добровольно передаёте свои персональные данные напрямую нам или соответствующим мессенджерам.
+   Мы не собираем персональные данные автоматически, не передаём их третьим лицам и не используем для рассылки рекламы.
+   Обратите внимание, что при использовании мессенджеров WhatsApp и Telegram ваши данные обрабатываются в соответствии с политиками конфиденциальности этих сервисов, и мы не контролируем их действия с вашими данными.
+    <br><br>
+    Вы имеете право отказаться от передачи своих данных и прекратить использование контактных каналов в любое время.
+   
+  </p>
+</section>
+
+</body>
+</html>
