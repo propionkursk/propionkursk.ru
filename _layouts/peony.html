@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% include seo-meta.html %}
+  <style>
+    :root {
+      --warm-ivory: #FAF9F5;
+      --white: #FFFFFF;
+      --peony-green: #315C45;
+      --deep-green: #203D30;
+      --soft-sage: #E8EFE9;
+      --peony-rose: #B96576;
+      --charcoal: #262B27;
+      --muted-gray: #6D746F;
+      --border: #E3E6E2;
+      --radius: 14px;
+      --font-main: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-main);
+      background: var(--warm-ivory);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+    a { color: var(--peony-green); }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 20px; }
+    header.site-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 20px;
+    }
+    header.site-header nav a {
+      color: var(--charcoal);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .breadcrumbs { padding: 16px 20px 0; }
+    .breadcrumbs ol { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; color: var(--muted-gray); font-size: 14px; }
+    .breadcrumbs li + li::before { content: "→"; margin-right: 6px; }
+    .breadcrumbs a { text-decoration: none; }
+
+    .hero { display: flex; flex-direction: column; gap: 24px; padding: 24px 20px; max-width: 1240px; margin: 0 auto; }
+    .hero__media { aspect-ratio: 1 / 1; overflow: hidden; border-radius: var(--radius); }
+    .hero__cover { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero h1 { font-size: 32px; margin: 0 0 12px; }
+    .hero__short { font-size: 18px; color: var(--charcoal); }
+
+    .badges { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 12px 0 0; }
+    .badge { background: var(--soft-sage); color: var(--deep-green); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+
+    .commerce { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin: 0 20px 24px; max-width: 1200px; }
+    .commerce__price { font-size: 24px; font-weight: 700; margin: 0 0 12px; }
+    .commerce__note { color: var(--muted-gray); margin: 0 0 12px; }
+    .btn { display: inline-block; min-height: 44px; line-height: 44px; padding: 0 24px; border-radius: 10px; text-decoration: none; font-weight: 600; }
+    .btn--primary { background: var(--peony-green); color: var(--white); }
+    .btn--primary:hover { background: var(--deep-green); }
+    .btn--secondary { background: var(--soft-sage); color: var(--deep-green); }
+
+    main.main-info, section.content-block, section.gallery, section.related, section.faq {
+      max-width: 1240px; margin: 0 auto; padding: 24px 20px;
+    }
+    .characteristics__list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px 24px; }
+    .characteristics__row { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+    .characteristics__row dt { color: var(--muted-gray); font-weight: 400; }
+    .characteristics__row dd { margin: 0; font-weight: 600; }
+
+    .gallery__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    .gallery__img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius); }
+
+    .content-block__part { margin-bottom: 24px; }
+
+    .related__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; }
+    .related__card { text-decoration: none; color: var(--charcoal); text-align: center; }
+    .related__card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius); }
+
+    .faq__item { border-bottom: 1px solid var(--border); padding: 12px 0; }
+    .faq__item h3 { margin: 0 0 6px; font-size: 18px; }
+
+    .final-cta { background: var(--deep-green); color: var(--white); text-align: center; padding: 48px 20px; }
+    .final-cta a { color: var(--white); }
+
+    footer.site-footer { background: var(--deep-green); color: var(--white); padding: 32px 20px; text-align: center; font-size: 14px; }
+    footer.site-footer a { color: var(--white); }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav><a href="/">ПроПионыКурск</a></nav>
+    </div>
+  </header>
+
+  {% include breadcrumbs.html variety=page.variety %}
+
+  {% include hero.html variety=page.variety %}
+
+  {% include commerce.html variety=page.variety %}
+
+  <main class="main-info">
+    {% include characteristics.html variety=page.variety %}
+    {% include gallery.html variety=page.variety %}
+  </main>
+
+  {% include content.html variety=page.variety %}
+
+  {% include related.html variety=page.variety %}
+
+  {% include faq.html variety=page.variety %}
+
+  <section class="final-cta">
+    <a href="/catalog/">Смотреть другие сорта</a>
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; {{ site.time | date: '%Y' }} ПроПионыКурск</p>
+    <p><a href="https://wa.me/{{ site.data.contacts.whatsapp_number }}">WhatsApp</a> · <a href="https://t.me/{{ site.data.contacts.telegram_username }}">Telegram</a> · {{ site.data.contacts.phone_display }}</p>
+  </footer>
+
+  {{ content }}
+</body>
+</html>

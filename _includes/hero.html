@@ -1,0 +1,13 @@
+{% assign v = include.variety %}
+<section class="hero">
+  <div class="hero__media">
+    <img src="{{ v.images.cover }}" alt="Пион {{ v.name_ru }}" class="hero__cover">
+  </div>
+  <div class="hero__info">
+    <h1>Пион {{ v.name_ru }} ({{ v.name_original }})</h1>
+    {% if v.content.short_description %}
+      <p class="hero__short">{{ v.content.short_description }}</p>
+    {% endif %}
+    {% include badges.html variety=v %}
+  </div>
+</section>

@@ -1,0 +1,16 @@
+{% assign v = include.variety %}
+{% comment %}
+  Раздел 7.1: фиксированный порядок, полностью автоматический вывод.
+  group → flower.form → flowering.period → fragrance (если не none/null) → cut_flower_suitable.
+{% endcomment %}
+<ul class="badges">
+  <li class="badge">{{ site.data.labels.group[v.group] }}</li>
+  <li class="badge">{{ site.data.labels.flower_form[v.flower.form] }}</li>
+  <li class="badge">{{ site.data.labels.flowering_period[v.flowering.period] }}</li>
+  {% if v.flower.fragrance and v.flower.fragrance != "none" %}
+    <li class="badge">{{ site.data.labels.fragrance[v.flower.fragrance] }}</li>
+  {% endif %}
+  {% if v.plant.cut_flower_suitable == true %}
+    <li class="badge">Для срезки</li>
+  {% endif %}
+</ul>

@@ -1,0 +1,23 @@
+{% assign v = include.variety %}
+{% assign similar_ids = v.similar %}
+<section id="similar" class="related">
+  {% if similar_ids and similar_ids.size > 0 %}
+    <h2>Похожие сорта</h2>
+    <div class="related__grid">
+      {% for sid in similar_ids %}
+        {% assign match = site.data.peonies | where: "id", sid | first %}
+        {% if match %}
+          <a class="related__card" href="/catalog/{{ match.group }}/{{ match.slug }}/">
+            <img src="{{ match.images.cover }}" alt="{{ match.name_ru }}" loading="lazy">
+            <span>{{ match.name_ru }}</span>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% comment %}
+    Раздел 17.6: список полезных статей осознанно не финализирован —
+    временная заглушка до появления отдельной структуры материалов.
+  {% endcomment %}
+</section>

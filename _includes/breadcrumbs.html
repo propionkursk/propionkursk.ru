@@ -1,0 +1,9 @@
+{% assign v = include.variety %}
+<nav class="breadcrumbs" aria-label="Хлебные крошки">
+  <ol>
+    <li><a href="/">Главная</a></li>
+    <li><a href="/catalog/">Каталог пионов</a></li>
+    <li><a href="/catalog/{{ v.group }}/">{{ site.data.labels.group[v.group] }}</a></li>
+    <li aria-current="page">{{ v.name_ru }}</li>
+  </ol>
+</nav>

@@ -1,0 +1,17 @@
+{% assign v = include.variety %}
+{% assign gallery = v.images.gallery %}
+{% if gallery and gallery.size > 0 %}
+  <section class="gallery" aria-label="Галерея сорта {{ v.name_ru }}">
+    <h2>Галерея</h2>
+    <div class="gallery__grid">
+      {% for photo in gallery %}
+        <img
+          src="{{ photo.src }}"
+          alt="{{ photo.alt | default: v.name_ru }}"
+          loading="lazy"
+          class="gallery__img"
+        >
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}

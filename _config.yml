@@ -1,0 +1,14 @@
+title: "ПроПионыКурск"
+description: "Питомник пионов в Курске — травянистые, ИТО-гибриды и древовидные сорта, продажа делёнок"
+url: "https://propionkursk.ru"
+
+markdown: kramdown
+permalink: pretty
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - CLAUDE.md
+  - README.md
+  - "MASTER-PEONY-001_*.md"

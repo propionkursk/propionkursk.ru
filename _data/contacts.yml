@@ -1,0 +1,6 @@
+# Контакты питомника — используются для построения CTA-ссылок (раздел 10 MASTER-документа).
+# Значения перенесены из текущего опубликованного index.html, ничего не придумано.
+
+whatsapp_number: "79151128893"   # без + и пробелов, для wa.me/{number}?text=...
+telegram_username: "Nadezhdapion" # для t.me/{username}
+phone_display: "+7 915 112 8893"

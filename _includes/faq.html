@@ -1,0 +1,13 @@
+{% assign v = include.variety %}
+{% assign faq = v.faq %}
+{% if faq and faq.size > 0 %}
+  <section class="faq" aria-label="Частые вопросы о сорте {{ v.name_ru }}">
+    <h2>Частые вопросы</h2>
+    {% for item in faq %}
+      <div class="faq__item">
+        <h3>{{ item.question }}</h3>
+        <p>{{ item.answer }}</p>
+      </div>
+    {% endfor %}
+  </section>
+{% endif %}

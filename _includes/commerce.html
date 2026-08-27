@@ -1,0 +1,37 @@
+{% assign v = include.variety %}
+{% assign division = v.sale.division %}
+{% assign status = division.status %}
+{% comment %}
+  Раздел 10: один компонент, primary CTA и цена зависят от sale.division.status.
+  Цена показывается только при in_stock/preorder и только если реально задана.
+{% endcomment %}
+<section class="commerce">
+  {% if status == "unavailable" %}
+    <p class="commerce__note">Делёнки сорта сейчас нет в наличии</p>
+    <a class="btn btn--secondary" href="#similar">Смотреть похожие сорта</a>
+  {% else %}
+    {% if status == "in_stock" or status == "preorder" %}
+      {% if division.price_rub %}
+        <p class="commerce__price">{{ division.price_rub }} ₽</p>
+      {% endif %}
+    {% elsif status == "out_of_season" and division.season_note %}
+      <p class="commerce__note">{{ division.season_note }}</p>
+    {% endif %}
+
+    {% case status %}
+      {% when "in_stock" %}{% assign cta_text = "Узнать о наличии" %}
+      {% when "preorder" %}{% assign cta_text = "Оставить заявку на предзаказ" %}
+      {% when "out_of_season" %}{% assign cta_text = "Сообщить о наличии" %}
+    {% endcase %}
+
+    {% if cta_text %}
+      {% assign wa_message = "Здравствуйте, интересует делёнка " | append: v.name_ru %}
+      <a
+        class="btn btn--primary"
+        href="https://wa.me/{{ site.data.contacts.whatsapp_number }}?text={{ wa_message | url_encode }}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >{{ cta_text }}</a>
+    {% endif %}
+  {% endif %}
+</section>

@@ -1,0 +1,45 @@
+{% assign v = include.variety %}
+{% comment %}
+  Раздел 8: неизвестные необязательные значения не выводятся вовсе, без заглушек.
+{% endcomment %}
+<section class="characteristics">
+  <h2>Характеристики</h2>
+  <dl class="characteristics__list">
+    {% if v.name_original %}
+      <div class="characteristics__row"><dt>Оригинальное название</dt><dd>{{ v.name_original }}</dd></div>
+    {% endif %}
+    <div class="characteristics__row"><dt>Группа</dt><dd>{{ site.data.labels.group[v.group] }}</dd></div>
+    {% if v.origin.breeder %}
+      <div class="characteristics__row"><dt>Селекционер</dt><dd>{{ v.origin.breeder }}</dd></div>
+    {% endif %}
+    {% if v.origin.country %}
+      <div class="characteristics__row"><dt>Страна</dt><dd>{{ v.origin.country }}</dd></div>
+    {% endif %}
+    {% if v.origin.year %}
+      <div class="characteristics__row"><dt>Год</dt><dd>{{ v.origin.year }}</dd></div>
+    {% endif %}
+    {% if v.flower.color %}
+      <div class="characteristics__row">
+        <dt>Цвет</dt>
+        <dd>{{ site.data.labels.flower_color[v.flower.color] }}{% if v.flower.color_description %} — {{ v.flower.color_description }}{% endif %}</dd>
+      </div>
+    {% endif %}
+    {% if v.flower.form %}
+      <div class="characteristics__row"><dt>Форма цветка</dt><dd>{{ site.data.labels.flower_form[v.flower.form] }}</dd></div>
+    {% endif %}
+    {% if v.flowering.period %}
+      <div class="characteristics__row"><dt>Срок цветения</dt><dd>{{ site.data.labels.flowering_period[v.flowering.period] }}</dd></div>
+    {% endif %}
+    {% if v.plant.height_cm %}
+      <div class="characteristics__row"><dt>Высота</dt><dd>{{ v.plant.height_cm }} см</dd></div>
+    {% endif %}
+    {% if v.flower.fragrance and v.flower.fragrance != "none" %}
+      <div class="characteristics__row"><dt>Аромат</dt><dd>{{ site.data.labels.fragrance[v.flower.fragrance] }}</dd></div>
+    {% endif %}
+    {% if v.plant.cut_flower_suitable == true %}
+      <div class="characteristics__row"><dt>Использование</dt><dd>{{ site.data.labels.cut_flower_suitable["true"] }}</dd></div>
+    {% elsif v.plant.cut_flower_suitable == false %}
+      <div class="characteristics__row"><dt>Использование</dt><dd>{{ site.data.labels.cut_flower_suitable["false"] }}</dd></div>
+    {% endif %}
+  </dl>
+</section>
