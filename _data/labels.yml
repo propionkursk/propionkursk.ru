@@ -41,3 +41,10 @@ flowering_period:
 cut_flower_suitable:
   "true": "Сад, срезка"
   "false": "Сад"
+
+# Раздел 10: короткая статусная строка в commerce-карточке (sale.division.status)
+sale_status:
+  in_stock: "в наличии"
+  preorder: "доступен предзаказ"
+  out_of_season: "сезон продаж ещё не наступил"
+  unavailable: "недоступен"

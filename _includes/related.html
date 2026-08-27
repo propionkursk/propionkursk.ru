@@ -3,14 +3,20 @@
 <section id="similar" class="related">
   {% if similar_ids and similar_ids.size > 0 %}
     <h2>Похожие сорта</h2>
-    <div class="related__grid">
+    <div class="related__row">
       {% for sid in similar_ids %}
         {% assign match = site.data.peonies | where: "id", sid | first %}
         {% if match %}
-          <a class="related__card" href="/catalog/{{ match.group }}/{{ match.slug }}/">
-            <img src="{{ match.images.cover }}" alt="{{ match.name_ru }}" loading="lazy">
-            <span>{{ match.name_ru }}</span>
-          </a>
+          <article class="related__card">
+            <a href="/catalog/{{ match.group }}/{{ match.slug }}/" class="related__media">
+              <img src="{{ match.images.cover }}" alt="{{ match.name_ru }}" loading="lazy">
+            </a>
+            <h3>{{ match.name_ru }}</h3>
+            <p class="related__meta">
+              {{ site.data.labels.flower_form[match.flower.form] }}{% if match.flower.color %}, {{ site.data.labels.flower_color[match.flower.color] }}{% endif %}{% if match.flowering.period %}, {{ site.data.labels.flowering_period[match.flowering.period] }}{% endif %}
+            </p>
+            <a href="/catalog/{{ match.group }}/{{ match.slug }}/" class="btn btn--secondary btn--small">Подробнее</a>
+          </article>
         {% endif %}
       {% endfor %}
     </div>

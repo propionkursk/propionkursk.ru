@@ -4,10 +4,10 @@
   <section class="faq" aria-label="Частые вопросы о сорте {{ v.name_ru }}">
     <h2>Частые вопросы</h2>
     {% for item in faq %}
-      <div class="faq__item">
-        <h3>{{ item.question }}</h3>
+      <details class="faq__item">
+        <summary>{{ item.question }}</summary>
         <p>{{ item.answer }}</p>
-      </div>
+      </details>
     {% endfor %}
   </section>
 {% endif %}

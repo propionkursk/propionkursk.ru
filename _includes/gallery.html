@@ -5,12 +5,15 @@
     <h2>Галерея</h2>
     <div class="gallery__grid">
       {% for photo in gallery %}
-        <img
-          src="{{ photo.src }}"
-          alt="{{ photo.alt | default: v.name_ru }}"
-          loading="lazy"
-          class="gallery__img"
-        >
+        <figure class="gallery__item">
+          <img
+            src="{{ photo.src }}"
+            alt="{{ photo.alt | default: v.name_ru }}"
+            loading="lazy"
+            class="gallery__img"
+          >
+          {% if photo.caption %}<figcaption>{{ photo.caption }}</figcaption>{% endif %}
+        </figure>
       {% endfor %}
     </div>
   </section>

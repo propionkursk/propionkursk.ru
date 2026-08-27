@@ -4,15 +4,20 @@
 {% comment %}
   Раздел 10: один компонент, primary CTA и цена зависят от sale.division.status.
   Цена показывается только при in_stock/preorder и только если реально задана.
+  На десктопе становится sticky-сайдбаром рядом с фото (см. CSS .commerce).
 {% endcomment %}
 <section class="commerce">
+  <h2 class="commerce__title">Делёнка {{ v.name_ru }}</h2>
+
   {% if status == "unavailable" %}
     <p class="commerce__note">Делёнки сорта сейчас нет в наличии</p>
     <a class="btn btn--secondary" href="#similar">Смотреть похожие сорта</a>
   {% else %}
+    <p class="commerce__status">Статус: <strong>{{ site.data.labels.sale_status[status] }}</strong></p>
+
     {% if status == "in_stock" or status == "preorder" %}
       {% if division.price_rub %}
-        <p class="commerce__price">{{ division.price_rub }} ₽</p>
+        <p class="commerce__price">Цена: {{ division.price_rub }} ₽</p>
       {% endif %}
     {% elsif status == "out_of_season" and division.season_note %}
       <p class="commerce__note">{{ division.season_note }}</p>
