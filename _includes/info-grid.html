@@ -1,0 +1,63 @@
+{% assign v = include.variety %}
+{% assign c = v.content %}
+{% comment %}
+  Сетка 3×2, лёгкие карточки (светлая граница + фон, см. .info-card).
+  Раздел рендерится всегда; если данных нет — честный плейсхолдер вместо
+  скрытия карточки (плейсхолдер это констатация отсутствия данных, а не
+  выдуманный факт о сорте).
+{% endcomment %}
+<section class="info-grid">
+  <div class="info-card">
+    <h2>Описание сорта</h2>
+    {% if c.description %}<p>{{ c.description }}</p>{% endif %}
+  </div>
+
+  <div class="info-card">
+    <h2>Преимущества</h2>
+    {% if c.advantages and c.advantages.size > 0 %}
+      <ul>
+        {% for item in c.advantages %}<li>{{ item }}</li>{% endfor %}
+      </ul>
+    {% else %}
+      <p class="placeholder-text">Преимущества уточняются.</p>
+    {% endif %}
+  </div>
+
+  <div class="info-card">
+    <h2>Наш опыт выращивания в Курской области</h2>
+    {% if v.experience %}
+      <p>{{ v.experience }}</p>
+    {% else %}
+      <p class="placeholder-text">Информация появится после нескольких сезонов наблюдений за сортом в нашем питомнике.</p>
+    {% endif %}
+  </div>
+
+  <div class="info-card">
+    <h2>Особенности ухода</h2>
+    {% if c.care %}
+      <p>{{ c.care }}</p>
+    {% else %}
+      <p class="placeholder-text">Выраженных сортоспецифических требований к уходу, которые мы можем достоверно подтвердить, пока не фиксируем. Ориентируйтесь на общие рекомендации для травянистых пионов.</p>
+    {% endif %}
+  </div>
+
+  <div class="info-card">
+    <h2>Полезные статьи</h2>
+    {% comment %} Раздел 17.6: список статей не финализирован — временная заглушка допустима. {% endcomment %}
+    <p class="placeholder-text">Материалы для этого раздела ещё готовятся.</p>
+  </div>
+
+  <div class="info-card">
+    <h2>Часто задаваемые вопросы</h2>
+    {% if v.faq and v.faq.size > 0 %}
+      {% for item in v.faq %}
+        <details class="faq__item">
+          <summary>{{ item.question }}</summary>
+          <p>{{ item.answer }}</p>
+        </details>
+      {% endfor %}
+    {% else %}
+      <p class="placeholder-text">Вопросы по сорту пока не собраны.</p>
+    {% endif %}
+  </div>
+</section>

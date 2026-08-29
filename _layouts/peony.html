@@ -63,6 +63,8 @@
 
     .badges { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 12px 0 0; }
     .badge { background: var(--soft-sage); color: var(--deep-green); border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+    .badge--solid { background: var(--peony-green); color: var(--white); }
+    .badge--accent { background: var(--peony-rose); color: var(--white); }
 
     .commerce {
       background: var(--white);
@@ -74,30 +76,96 @@
     @media (min-width: 900px) {
       .commerce { position: sticky; top: 20px; }
     }
+    .commerce__row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .commerce__action { flex-shrink: 0; }
     .commerce__title { font-size: 18px; margin: 0 0 10px; }
-    .commerce__status { margin: 0 0 8px; color: var(--muted-gray); }
-    .commerce__price { font-size: 22px; font-weight: 700; margin: 0 0 14px; }
-    .commerce__note { color: var(--muted-gray); margin: 0 0 12px; }
+    .commerce__status { margin: 0; color: var(--muted-gray); }
+    .commerce__price { font-size: 22px; font-weight: 700; margin: 6px 0 0; }
+    .commerce__note { color: var(--muted-gray); margin: 12px 0 0; }
+    .commerce__more-placeholder { color: var(--muted-gray); font-style: italic; font-size: 13px; margin: 16px 0 0; }
     .btn { display: inline-block; min-height: 44px; line-height: 44px; padding: 0 24px; border-radius: 10px; text-decoration: none; font-weight: 600; }
     .btn--primary { background: var(--peony-green); color: var(--white); }
     .btn--primary:hover { background: var(--deep-green); }
     .btn--secondary { background: var(--soft-sage); color: var(--deep-green); }
     .btn--small { min-height: 36px; line-height: 36px; padding: 0 16px; font-size: 14px; }
 
-    main.main-info, section.content-block, section.gallery, section.related, section.faq {
+    main.main-info, section.info-grid, section.related {
       max-width: 1240px; margin: 0 auto; padding: 24px 20px;
     }
-    .characteristics__list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px 24px; }
-    .characteristics__row { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+
+    main.main-info {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    @media (min-width: 900px) {
+      main.main-info { grid-template-columns: 1fr 1fr; align-items: start; }
+    }
+    /* Основные характеристики — 2-колоночная таблица в лёгкой карточке, чередующиеся строки */
+    .characteristics__list {
+      display: grid;
+      grid-template-columns: minmax(140px, max-content) 1fr;
+      column-gap: 16px;
+      row-gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .characteristics__row { display: contents; }
+    .characteristics__row dt, .characteristics__row dd {
+      padding: 12px 16px;
+      margin: 0;
+      text-align: left;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+    .characteristics__row:nth-child(even) dt, .characteristics__row:nth-child(even) dd {
+      background: var(--warm-ivory);
+    }
     .characteristics__row dt { color: var(--muted-gray); font-weight: 400; }
-    .characteristics__row dd { margin: 0; font-weight: 600; }
+    .characteristics__row dd { font-weight: 600; }
 
-    .gallery__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    section.gallery { padding: 0; }
+    .gallery__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    @media (max-width: 560px) {
+      .gallery__grid { grid-template-columns: repeat(2, 1fr); }
+    }
     .gallery__item { margin: 0; }
-    .gallery__img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius); }
-    .gallery__item figcaption { font-size: 13px; color: var(--muted-gray); margin-top: 4px; text-align: center; }
+    .gallery__img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius); display: block; }
+    .gallery__item figcaption { font-size: 12px; color: var(--muted-gray); margin-top: 4px; text-align: center; }
+    .gallery__placeholder {
+      aspect-ratio: 1 / 1;
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px;
+      font-size: 12px;
+      color: var(--muted-gray);
+      background: var(--soft-sage);
+    }
 
-    .content-block__part { margin-bottom: 24px; }
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 900px) {
+      .info-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .info-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .info-card h2 { font-size: 18px; margin: 0 0 10px; }
+    .info-card p, .info-card ul { margin: 0; }
+    .info-card ul { padding-left: 18px; }
+    .info-card li { margin-bottom: 4px; }
+    .placeholder-text { color: var(--muted-gray); font-style: italic; }
 
     .related__row {
       display: flex;
@@ -155,11 +223,9 @@
     {% include gallery.html variety=page.variety %}
   </main>
 
-  {% include content.html variety=page.variety %}
+  {% include info-grid.html variety=page.variety %}
 
   {% include related.html variety=page.variety %}
-
-  {% include faq.html variety=page.variety %}
 
   <section class="final-cta">
     <a href="/catalog/">Смотреть другие сорта</a>

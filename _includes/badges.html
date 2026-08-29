@@ -3,12 +3,18 @@
   Раздел 7.1: фиксированный порядок, полностью автоматический вывод.
   group → flower.form → flowering.period → fragrance (если не none/null) → cut_flower_suitable.
 {% endcomment %}
+{% comment %}
+  Цвета badge (STYLE-001 2.3): group/form — Peony Green, как основная кнопка
+  (.badge--solid), это самые структурные признаки сорта. fragrance — Peony
+  Rose (.badge--accent), ограниченный эмоциональный акцент по стилю. period
+  и cut_flower_suitable — нейтральный Soft Sage (.badge по умолчанию).
+{% endcomment %}
 <ul class="badges">
-  <li class="badge">{{ site.data.labels.group[v.group] }}</li>
-  <li class="badge">{{ site.data.labels.flower_form[v.flower.form] }}</li>
+  <li class="badge badge--solid">{{ site.data.labels.group[v.group] }}</li>
+  <li class="badge badge--solid">{{ site.data.labels.flower_form[v.flower.form] }}</li>
   <li class="badge">{{ site.data.labels.flowering_period[v.flowering.period] }}</li>
   {% if v.flower.fragrance and v.flower.fragrance != "none" %}
-    <li class="badge">{{ site.data.labels.fragrance[v.flower.fragrance] }}</li>
+    <li class="badge badge--accent">{{ site.data.labels.fragrance[v.flower.fragrance] }}</li>
   {% endif %}
   {% if v.plant.cut_flower_suitable == true %}
     <li class="badge">Для срезки</li>

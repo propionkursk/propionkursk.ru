@@ -48,3 +48,23 @@ sale_status:
   preorder: "доступен предзаказ"
   out_of_season: "сезон продаж ещё не наступил"
   unavailable: "недоступен"
+
+# Раздел 2.6 STYLE-001: желательные типы кадров галереи, фиксированный порядок.
+# images.gallery[].type сопоставляется с key; кадра нет — слот рисуется плейсхолдером.
+gallery_shot_types:
+  - key: bud
+    label: "Бутон"
+  - key: opening
+    label: "Начало раскрытия"
+  - key: full_bloom
+    label: "Полный роспуск"
+  - key: late_bloom
+    label: "Поздняя стадия цветения"
+  - key: closeup
+    label: "Крупный план"
+  - key: bush
+    label: "Куст"
+  - key: foliage
+    label: "Листва"
+  - key: division
+    label: "Делёнка"
