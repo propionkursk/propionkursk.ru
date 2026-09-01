@@ -25,11 +25,30 @@
 
   <div class="info-card">
     <h2>Наш опыт выращивания в Курской области</h2>
-    {% if v.experience %}
-      <p>{{ v.experience }}</p>
+    {% comment %}
+      Заглушка "Наблюдения питомника собираются" — для полей именно нашего
+      опыта (experience.*), в отличие от справочных null ("Пока нет
+      подтверждённых данных", см. characteristics.html — color_change).
+    {% endcomment %}
+    {% if v.experience.general %}
+      <p>{{ v.experience.general }}</p>
     {% else %}
-      <p class="placeholder-text">Информация появится после нескольких сезонов наблюдений за сортом в нашем питомнике.</p>
+      <p class="placeholder-text">Мы собираем собственные наблюдения за этим сортом в условиях Курской области. Раздел будет дополняться по мере накопления данных.</p>
     {% endif %}
+    <dl class="experience-notes">
+      <div class="experience-notes__row">
+        <dt>Аромат — наши наблюдения</dt>
+        <dd>{{ v.experience.fragrance | default: "Наблюдения питомника собираются" }}</dd>
+      </div>
+      <div class="experience-notes__row">
+        <dt>Зимовка</dt>
+        <dd>{{ v.experience.winter_hardiness | default: "Наблюдения питомника собираются" }}</dd>
+      </div>
+      <div class="experience-notes__row">
+        <dt>Срезка</dt>
+        <dd>{{ v.experience.cut_flower | default: "Наблюдения питомника собираются" }}</dd>
+      </div>
+    </dl>
   </div>
 
   <div class="info-card">

@@ -1,31 +1,28 @@
 {% assign v = include.variety %}
 {% assign gallery = v.images.gallery %}
 {% comment %}
-  Раздел 2.6 STYLE-001: фиксированный набор из 8 желательных типов кадров.
-  Кадр есть в images.gallery (по полю type) — показываем фото; нет — честный
-  плейсхолдер с подписью типа, а не пропуск слота.
+  Раздел 2.6 STYLE-001 + PM-007 v1.3: сорт может иметь несколько фото одного
+  типа (например, 3 кадра "полный роспуск") — поэтому выводим все фото из
+  images.gallery в заданном в данных порядке, а не по одному слоту на тип.
+  Пустого слота не бывает: нет фото — нет записи в массиве, ничего не
+  рисуем (ни рамкой-заглушкой, ни текстом "фото отсутствует").
 {% endcomment %}
+{% if gallery and gallery.size > 0 %}
 <section class="gallery" aria-label="Галерея сорта {{ v.name_ru }}">
   <h2>Фотогалерея</h2>
   <div class="gallery__grid">
-    {% for slot in site.data.labels.gallery_shot_types %}
-      {% assign photo = nil %}
-      {% if gallery %}{% assign photo = gallery | where: "type", slot.key | first %}{% endif %}
-      {% if photo %}
-        <figure class="gallery__item">
-          <img
-            src="{{ photo.src }}"
-            alt="{{ photo.alt | default: v.name_ru }}"
-            loading="lazy"
-            class="gallery__img"
-          >
-          <figcaption>{{ photo.caption | default: slot.label }}</figcaption>
-        </figure>
-      {% else %}
-        <div class="gallery__placeholder" aria-hidden="false">
-          <span>{{ slot.label }}</span>
-        </div>
-      {% endif %}
+    {% for photo in gallery %}
+      {% assign type_entry = site.data.labels.gallery_shot_types | where: "key", photo.type | first %}
+      <figure class="gallery__item">
+        <img
+          src="{{ photo.src }}"
+          alt="{{ photo.alt | default: v.name_ru }}"
+          loading="lazy"
+          class="gallery__img"
+        >
+        <figcaption>{{ photo.caption | default: type_entry.label | default: v.name_ru }}</figcaption>
+      </figure>
     {% endfor %}
   </div>
 </section>
+{% endif %}

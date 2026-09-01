@@ -23,6 +23,10 @@
         <dt>Цвет</dt>
         <dd>{{ site.data.labels.flower_color[v.flower.color] }}{% if v.flower.color_description %} — {{ v.flower.color_description }}{% endif %}</dd>
       </div>
+      <div class="characteristics__row">
+        <dt>Изменение окраски при роспуске</dt>
+        <dd>{{ v.flower.color_change | default: "Пока нет подтверждённых данных" }}</dd>
+      </div>
     {% endif %}
     {% if v.flower.form %}
       <div class="characteristics__row"><dt>Форма цветка</dt><dd>{{ site.data.labels.flower_form[v.flower.form] }}</dd></div>
