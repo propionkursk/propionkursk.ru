@@ -1,0 +1,22 @@
+{% comment %}
+  Плитки групп — только для групп, реально присутствующих в peonies.yml
+  (сейчас herbaceous и ito; tree появится сама, как только будет запись).
+  "Срезка и букеты" не показываем — это отдельное бизнес-направление без
+  собственной модели данных (раздел 3.11), выдумывать для него плитку нельзя.
+{% endcomment %}
+{% assign known_groups = "herbaceous,ito,tree" | split: "," %}
+<div class="catalog-groups">
+  {% for g in known_groups %}
+    {% assign items = site.data.peonies | where: "group", g %}
+    {% if items.size > 0 %}
+      <a class="catalog-groups__tile" href="/catalog/{{ g }}/">
+        <img src="{{ items.first.images.cover }}" alt="{{ site.data.labels.group_title[g] }}">
+        <div>
+          <h2>{{ site.data.labels.group_title[g] }}</h2>
+          <p>{{ items.size }} {% include sort-word.html count=items.size %}</p>
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    {% endif %}
+  {% endfor %}
+</div>

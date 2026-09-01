@@ -1,0 +1,8 @@
+{% comment %}
+  Раздел 17.13: полноценный footer с навигацией не финализирован — это
+  временный минимальный footer, общий для всех типов страниц.
+{% endcomment %}
+<footer class="site-footer">
+  <p>&copy; {{ site.time | date: '%Y' }} ПроПионыКурск</p>
+  <p><a href="https://wa.me/{{ site.data.contacts.whatsapp_number }}">WhatsApp</a> · <a href="https://t.me/{{ site.data.contacts.telegram_username }}">Telegram</a> · {{ site.data.contacts.phone_display }}</p>
+</footer>

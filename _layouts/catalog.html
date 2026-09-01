@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% if page.group %}
+    {% assign group_title = site.data.labels.group_title[page.group] %}
+    {% assign seo_title = group_title | append: " — каталог сортов | " | append: site.title %}
+  {% else %}
+    {% assign seo_title = "Каталог пионов — сорта, фото, характеристики | " | append: site.title %}
+  {% endif %}
+  <title>{{ seo_title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Главная", "item": "{{ site.url }}/" }
+      {% if page.group %},{ "@type": "ListItem", "position": 2, "name": "Каталог пионов", "item": "{{ site.url }}/catalog/" },{ "@type": "ListItem", "position": 3, "name": {{ group_title | jsonify }}, "item": "{{ site.url }}{{ page.url }}" }
+      {% else %},{ "@type": "ListItem", "position": 2, "name": "Каталог пионов", "item": "{{ site.url }}{{ page.url }}" }
+      {% endif %}
+    ]
+  }
+  </script>
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+  {% include site-header.html %}
+
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+    <ol>
+      <li><a href="/">Главная</a></li>
+      {% if page.group %}
+        <li><a href="/catalog/">Каталог пионов</a></li>
+        <li aria-current="page">{{ group_title }}</li>
+      {% else %}
+        <li aria-current="page">Каталог пионов</li>
+      {% endif %}
+    </ol>
+  </nav>
+
+  <section class="catalog-intro">
+    <h1>{{ group_title | default: "Каталог пионов" }}</h1>
+  </section>
+
+  {% unless page.group %}
+    <section class="catalog-groups">
+      {% include catalog-groups.html %}
+    </section>
+  {% endunless %}
+
+  {% if page.group %}
+    {% assign varieties = site.data.peonies | where: "group", page.group %}
+  {% else %}
+    {% assign varieties = site.data.peonies %}
+  {% endif %}
+
+  <section class="catalog-list">
+    <p class="catalog-count">Сортов в каталоге: {{ varieties.size }}</p>
+    <div class="catalog-grid">
+      {% for v in varieties %}
+        {% include catalog-card.html variety=v %}
+      {% endfor %}
+    </div>
+  </section>
+
+  {% include site-footer.html %}
+</body>
+</html>

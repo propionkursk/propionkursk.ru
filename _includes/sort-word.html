@@ -1,0 +1,7 @@
+{% comment %}
+  Склонение "сорт/сорта/сортов" по числу include.count. Использование:
+  {% include sort-word.html count=n %}
+{% endcomment %}
+{% assign n100 = include.count | modulo: 100 %}
+{% assign n10 = include.count | modulo: 10 %}
+{% if n100 >= 11 and n100 <= 14 %}сортов{% elsif n10 == 1 %}сорт{% elsif n10 >= 2 and n10 <= 4 %}сорта{% else %}сортов{% endif %}

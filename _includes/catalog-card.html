@@ -1,0 +1,17 @@
+{% assign v = include.variety %}
+<a class="catalog-card" href="/catalog/{{ v.group }}/{{ v.slug }}/">
+  <div class="catalog-card__media">
+    <img src="{{ v.images.cover }}" alt="{{ v.name_ru }}" loading="lazy">
+    <span class="catalog-card__group-badge">{{ site.data.labels.group[v.group] }}</span>
+  </div>
+  <div class="catalog-card__body">
+    <h3>{{ v.name_ru }} <span class="catalog-card__original">{{ v.name_original }}</span></h3>
+    <ul class="catalog-card__meta">
+      {% if v.flowering.period %}<li>{{ site.data.labels.flowering_period[v.flowering.period] | remove: " срок цветения" }}</li>{% endif %}
+      {% if v.flower.color %}<li>{{ site.data.labels.flower_color[v.flower.color] }}</li>{% endif %}
+      {% if v.plant.height_cm %}<li>Высота {{ v.plant.height_cm }} см</li>{% endif %}
+    </ul>
+    {% if v.content.short_description %}<p>{{ v.content.short_description }}</p>{% endif %}
+    <span class="catalog-card__link">Подробнее →</span>
+  </div>
+</a>
