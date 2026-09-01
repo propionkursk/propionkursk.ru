@@ -5,6 +5,9 @@ url: "https://propionkursk.ru"
 markdown: kramdown
 permalink: pretty
 
+plugins:
+  - jekyll-sitemap
+
 exclude:
   - Gemfile
   - Gemfile.lock

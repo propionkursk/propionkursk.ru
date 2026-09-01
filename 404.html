@@ -1,0 +1,28 @@
+---
+permalink: /404.html
+---
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Страница не найдена — ПроПионыКурск</title>
+  <meta name="robots" content="noindex">
+  {% include favicon.html %}
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+  {% include site-header.html %}
+
+  <section class="home-section" style="text-align: center; padding: 64px 20px;">
+    <h1 style="font-size: 32px; margin: 0 0 12px;">Страница не найдена</h1>
+    <p style="color: var(--muted-gray); font-size: 18px; margin: 0 0 24px;">
+      Такой страницы нет — возможно, ссылка устарела или в адресе опечатка.
+    </p>
+    <a class="btn btn--primary" href="/">На главную</a>
+    <a class="btn btn--secondary" href="/catalog/" style="margin-left: 12px;">В каталог пионов</a>
+  </section>
+
+  {% include site-footer.html %}
+</body>
+</html>
