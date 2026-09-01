@@ -260,3 +260,32 @@ section.catalog-intro h1 { font-size: 36px; margin: 0 0 8px; }
 .catalog-card__meta li { background: var(--soft-sage); border-radius: 999px; padding: 3px 9px; }
 .catalog-card__body p { font-size: 14px; margin: 0; color: var(--charcoal); flex-grow: 1; }
 .catalog-card__link { font-size: 14px; font-weight: 600; color: var(--peony-green); margin-top: auto; }
+
+/* ---------- Главная страница ---------- */
+
+.home-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+@media (min-width: 900px) {
+  .home-hero { grid-template-columns: 1fr 1fr; align-items: center; }
+}
+.home-hero__text h1 { font-size: 36px; margin: 0 0 12px; }
+.home-hero__text p { font-size: 18px; color: var(--charcoal); margin: 0 0 20px; }
+.home-hero__media { aspect-ratio: 1 / 1; border-radius: var(--radius); overflow: hidden; }
+.home-hero__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.home-section { max-width: 1240px; margin: 0 auto; padding: 24px 20px; }
+.home-section h2 { font-size: 26px; margin: 0 0 16px; }
+.home-section__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.home-section__head h2 { margin: 0; }
+.home-section__head a { font-weight: 600; text-decoration: none; white-space: nowrap; }
+
+.home-section .info-card p { margin: 0 0 12px; }
+.home-section .info-card p:last-child { margin-bottom: 0; }
+.home-contacts p { margin: 0 0 8px; }
+.home-contacts p:last-child { margin-bottom: 0; }
