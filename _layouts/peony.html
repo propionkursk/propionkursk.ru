@@ -12,9 +12,17 @@
 
   {% include breadcrumbs.html variety=page.variety %}
 
+  {% assign gallery = page.variety.images.gallery %}
+  {% assign has_gallery = false %}
+  {% if gallery and gallery.size > 0 %}{% assign has_gallery = true %}{% endif %}
+
   <div class="hero-grid">
     <div class="hero-media">
-      <img src="{{ page.variety.images.cover }}" alt="Пион {{ page.variety.name_ru }}" class="hero__cover">
+      <img src="{{ page.variety.images.cover }}" alt="Пион {{ page.variety.name_ru }}" class="hero__cover" id="hero-photo">
+      {% if has_gallery %}
+        <button type="button" class="hero-media__nav hero-media__nav--prev" id="hero-photo-prev" aria-label="Предыдущее фото">‹</button>
+        <button type="button" class="hero-media__nav hero-media__nav--next" id="hero-photo-next" aria-label="Следующее фото">›</button>
+      {% endif %}
     </div>
     <div class="hero-panel">
       {% include hero.html variety=page.variety %}
@@ -26,6 +34,40 @@
     {% include characteristics.html variety=page.variety %}
     {% include gallery.html variety=page.variety %}
   </main>
+
+  {% if has_gallery %}
+  <script>
+  (function () {
+    var photos = [
+      { src: {{ page.variety.images.cover | jsonify }}, alt: {{ page.variety.name_ru | prepend: "Пион " | jsonify }} }
+      {% for photo in gallery %}
+      , { src: {{ photo.src | jsonify }}, alt: {{ photo.alt | default: page.variety.name_ru | jsonify }} }
+      {% endfor %}
+    ];
+    var current = 0;
+    var img = document.getElementById('hero-photo');
+    var prevBtn = document.getElementById('hero-photo-prev');
+    var nextBtn = document.getElementById('hero-photo-next');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function show(index, scrollToHero) {
+      current = (index + photos.length) % photos.length;
+      img.src = photos[current].src;
+      img.alt = photos[current].alt;
+      if (scrollToHero) {
+        img.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+      }
+    }
+
+    prevBtn.addEventListener('click', function () { show(current - 1, false); });
+    nextBtn.addEventListener('click', function () { show(current + 1, false); });
+
+    document.querySelectorAll('.gallery__img').forEach(function (thumb, i) {
+      thumb.addEventListener('click', function () { show(i + 1, true); });
+    });
+  })();
+  </script>
+  {% endif %}
 
   {% include info-grid.html variety=page.variety %}
 
