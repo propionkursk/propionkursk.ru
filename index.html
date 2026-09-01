@@ -31,11 +31,15 @@
       <a href="/catalog/">Перейти в каталог →</a>
     </div>
     <div class="catalog-grid">
-      {% assign teaser = site.data.peonies | slice: 0, 6 %}
-      {% for v in teaser %}
-        {% include catalog-card.html variety=v %}
+      {% assign teaser_ids = "miss_america,alexander_fleming,bartzella,myrtle_gentry" | split: "," %}
+      {% for id in teaser_ids %}
+        {% assign v = site.data.peonies | where: "id", id | first %}
+        {% if v %}{% include catalog-card.html variety=v %}{% endif %}
       {% endfor %}
     </div>
+    <p class="home-section__more">
+      <a class="btn btn--primary" href="/catalog/">Показать больше сортов</a>
+    </p>
   </section>
 
   <section class="home-section">

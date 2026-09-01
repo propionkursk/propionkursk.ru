@@ -276,6 +276,7 @@ section.catalog-intro h1 { font-size: 36px; margin: 0 0 8px; }
 .home-section__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
 .home-section__head h2 { margin: 0; }
 .home-section__head a { font-weight: 600; text-decoration: none; white-space: nowrap; }
+.home-section__more { text-align: center; margin: 24px 0 0; }
 
 .home-section .info-card p { margin: 0 0 12px; }
 .home-section .info-card p:last-child { margin-bottom: 0; }
