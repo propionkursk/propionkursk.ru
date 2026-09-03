@@ -100,6 +100,8 @@ header.site-header nav a {
 .btn--primary { background: var(--peony-green); color: var(--white); }
 .btn--primary:hover { background: var(--deep-green); }
 .btn--secondary { background: var(--soft-sage); color: var(--deep-green); }
+.btn--outline { background: transparent; color: var(--peony-green); border: 1px solid var(--border); }
+.btn--outline:hover { border-color: var(--peony-green); }
 .btn--small { min-height: 36px; line-height: 36px; padding: 0 16px; font-size: 14px; }
 
 main.main-info, section.info-grid, section.related, section.catalog-intro, section.catalog-groups, section.catalog-list {
@@ -272,6 +274,26 @@ section.catalog-intro h1 { font-size: 36px; margin: 0 0 8px; }
 .catalog-card__meta li { background: var(--soft-sage); border-radius: 999px; padding: 3px 9px; }
 .catalog-card__body p { font-size: 14px; margin: 0; color: var(--charcoal); flex-grow: 1; }
 .catalog-card__link { font-size: 14px; font-weight: 600; color: var(--peony-green); margin-top: auto; }
+
+/* Карточка сорта только для главной — иконки-характеристики вместо описания/бейджей */
+.home-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--charcoal);
+}
+.home-card__media { aspect-ratio: 1 / 1; }
+.home-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.home-card__body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 10px; flex-grow: 1; }
+.home-card__body h3 { font-size: 16px; margin: 0; }
+.home-card__specs { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; flex-grow: 1; }
+.home-card__specs li { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--charcoal); }
+.home-card__icon { width: 18px; height: 18px; flex-shrink: 0; }
+.home-card__link { text-align: center; }
 
 /* ---------- Главная страница ---------- */
 

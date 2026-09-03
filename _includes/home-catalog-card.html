@@ -1,0 +1,33 @@
+{% comment %}
+  Карточка сорта ТОЛЬКО для главной страницы — отдельная от catalog-card.html
+  (тот используется на /catalog/ и его вёрстку не трогаем). Вместо короткого
+  описания и бейджей — 5 характеристик с иконками. Строка не рисуется без
+  значения (честно, ничего не выдумываем под иконку).
+{% endcomment %}
+{% assign v = include.variety %}
+<a class="home-card" href="/catalog/{{ v.group }}/{{ v.slug }}/">
+  <div class="home-card__media">
+    <img src="{{ v.images.cover }}" alt="{{ v.name_ru }}" loading="lazy">
+  </div>
+  <div class="home-card__body">
+    <h3>{{ v.name_ru }} <span class="catalog-card__original">{{ v.name_original }}</span></h3>
+    <ul class="home-card__specs">
+      {% if v.flower.form %}
+        <li><img src="/img/icons/form.png" alt="" class="home-card__icon"> {{ site.data.labels.flower_form[v.flower.form] }}</li>
+      {% endif %}
+      {% if v.flower.color %}
+        <li><img src="/img/icons/color.png" alt="" class="home-card__icon"> {{ site.data.labels.flower_color[v.flower.color] }}</li>
+      {% endif %}
+      {% if v.flowering.period %}
+        <li><img src="/img/icons/period.png" alt="" class="home-card__icon"> {{ site.data.labels.flowering_period[v.flowering.period] | remove: " срок цветения" }}</li>
+      {% endif %}
+      {% if v.plant.height_cm %}
+        <li><img src="/img/icons/height.png" alt="" class="home-card__icon"> {{ v.plant.height_cm }} см</li>
+      {% endif %}
+      {% if v.flower.fragrance and v.flower.fragrance != "none" %}
+        <li><img src="/img/icons/fragrance.png" alt="" class="home-card__icon"> {{ site.data.labels.fragrance[v.flower.fragrance] }}</li>
+      {% endif %}
+    </ul>
+    <span class="btn btn--outline btn--small home-card__link">Подробнее</span>
+  </div>
+</a>
