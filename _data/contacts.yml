@@ -1,7 +1,32 @@
-# Контакты питомника — используются для построения CTA-ссылок (раздел 10 MASTER-документа).
-# Значения перенесены из текущего опубликованного index.html, ничего не придумано.
+# Контакты питомника — единый источник контактных данных (CONTACTS-001).
+# Значения перенесены из ранее опубликованных данных сайта, ничего не придумано.
 
-whatsapp_number: "79151128893"   # без + и пробелов, для wa.me/{number}?text=...
-telegram_username: "Nadezhdapion" # для t.me/{username}
-phone_display: "+7 915 112 8893"
-vk_url: "https://vk.ru/propeonykursk"
+phone:
+  display: "+7 915 112-88-93"
+  value: "+79151128893"
+
+email: "propionkursk@yandex.ru"
+
+whatsapp:
+  display: "+7 915 112-88-93"
+  value: "79151128893"
+
+telegram:
+  display: "@Nadezhdapion"
+  username: "Nadezhdapion"
+
+vk:
+  display: "ProPionKursk"
+  url: "https://vk.ru/propeonykursk"
+
+avito:
+  display: "ProPionKursk"
+  url: "https://www.avito.ru/brands/00663710db8b8d309e54cb6cebc0e718?src=sharing"
+
+location:
+  city: "Курск"
+  area: "1-я Моква"
+
+pickup:
+  available: true
+  appointment_required: true

@@ -40,7 +40,7 @@
           {% assign wa_message = "Здравствуйте, интересует делёнка " | append: v.name_ru %}
           <a
             class="btn btn--primary"
-            href="https://wa.me/{{ site.data.contacts.whatsapp_number }}?text={{ wa_message | url_encode }}"
+            href="https://wa.me/{{ site.data.contacts.whatsapp.value }}?text={{ wa_message | url_encode }}"
             target="_blank"
             rel="noopener noreferrer"
           >{{ cta_text }}</a>

@@ -1,7 +1,7 @@
 ---
 permalink: /contacts/
-title: "Контакты"
-description: "Страница контактов propionkursk.ru обновляется."
+title: "Контакты питомника пионов в Курске"
+description: "Контакты питомника пионов ProPionKursk в Курске. Телефон, WhatsApp, Telegram, ВКонтакте и email. Самовывоз, получение делёнок и сезонных букетов по договорённости."
 ---
 <!DOCTYPE html>
 <html lang="ru">
@@ -11,6 +11,35 @@ description: "Страница контактов propionkursk.ru обновля
   <title>{{ page.title }} — ПроПионыКурск</title>
   <meta name="description" content="{{ page.description }}">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta name="robots" content="index, follow">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Главная", "item": "{{ site.url }}/" },
+      { "@type": "ListItem", "position": 2, "name": "Контакты", "item": "{{ site.url }}{{ page.url }}" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ProPionKursk",
+    "url": "{{ site.url }}/",
+    "telephone": "{{ site.data.contacts.phone.value }}",
+    "email": "{{ site.data.contacts.email }}",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "{{ site.data.contacts.location.city }}"
+    },
+    "sameAs": [
+      "{{ site.data.contacts.vk.url }}",
+      "{{ site.data.contacts.avito.url }}"
+    ]
+  }
+  </script>
   {% include favicon.html %}
   <link rel="stylesheet" href="/assets/css/main.css">
 </head>
@@ -24,11 +53,129 @@ description: "Страница контактов propionkursk.ru обновля
     </ol>
   </nav>
 
-  <section class="home-section">
-    <h1>Контакты</h1>
-    <div class="info-card">
-      <p class="placeholder-text">Страница контактов обновляется.</p>
-      <p>Актуальные способы связи — WhatsApp и Telegram — указаны в футере сайта.</p>
+  <section class="contacts-hero" id="contacts">
+    <div class="contacts-hero__head">
+      <h1>Контакты питомника пионов в Курске</h1>
+      <p class="contacts-hero__lead">Свяжитесь с нами по вопросам наличия сортов, заказа делёнок и сезонных букетов.</p>
+    </div>
+
+    <ul class="contacts-grid">
+      <li>
+        <a class="contacts-card" href="tel:{{ site.data.contacts.phone.value }}">
+          <span class="contacts-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3h3l1.5 4.5-2.2 1.8a13 13 0 0 0 6 6l1.8-2.2L21 14.5v3a2 2 0 0 1-2.2 2C11.7 18.9 5.1 12.3 4.5 5.2A2 2 0 0 1 6.5 3z"/></svg>
+          </span>
+          <span class="contacts-card__title">Телефон</span>
+          <span class="contacts-card__value">{{ site.data.contacts.phone.display }}</span>
+          <span class="contacts-card__cta">Позвонить →</span>
+        </a>
+      </li>
+      <li>
+        <a class="contacts-card" href="https://wa.me/{{ site.data.contacts.whatsapp.value }}" target="_blank" rel="noopener noreferrer">
+          <span class="contacts-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-3.9A8 8 0 1 1 8.6 19L4 20z"/><path d="M9 10.5c0 3 2.5 5.5 5.5 5.5"/></svg>
+          </span>
+          <span class="contacts-card__title">WhatsApp</span>
+          <span class="contacts-card__value">{{ site.data.contacts.whatsapp.display }}</span>
+          <span class="contacts-card__cta">Написать →</span>
+        </a>
+      </li>
+      <li>
+        <a class="contacts-card" href="https://t.me/{{ site.data.contacts.telegram.username }}" target="_blank" rel="noopener noreferrer">
+          <span class="contacts-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4L3 11l6 2.2M21 4l-3 16-8.8-6.8M21 4l-9.8 9.2M9 13.2V18l3-2.8"/></svg>
+          </span>
+          <span class="contacts-card__title">Telegram</span>
+          <span class="contacts-card__value">{{ site.data.contacts.telegram.display }}</span>
+          <span class="contacts-card__cta">Написать →</span>
+        </a>
+      </li>
+      <li>
+        <a class="contacts-card" href="{{ site.data.contacts.vk.url }}" target="_blank" rel="noopener noreferrer">
+          <span class="contacts-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="9" r="2.3"/><circle cx="15.5" cy="9" r="2.3"/><path d="M4.5 20c.6-3.3 3-5.5 7.5-5.5s6.9 2.2 7.5 5.5"/></svg>
+          </span>
+          <span class="contacts-card__title">ВКонтакте</span>
+          <span class="contacts-card__value">{{ site.data.contacts.vk.display }}</span>
+          <span class="contacts-card__cta">Перейти →</span>
+        </a>
+      </li>
+    </ul>
+
+    <p class="contacts-email">
+      <span class="contacts-email__label">Email</span>
+      <a href="mailto:{{ site.data.contacts.email }}">{{ site.data.contacts.email }}</a>
+    </p>
+  </section>
+
+  <section class="contacts-location">
+    <div class="contacts-location__inner">
+      <div class="contacts-location__about">
+        <h2>Питомник в Курске</h2>
+        <p>{{ site.data.contacts.location.city }}, {{ site.data.contacts.location.area }}</p>
+        <p>Здесь мы выращиваем пионы нашей коллекции.</p>
+      </div>
+      <div class="contacts-location__pickup">
+        <p class="contacts-location__pickup-title">Самовывоз — по предварительной договорённости</p>
+        <p>Перед поездкой свяжитесь с нами, чтобы согласовать время.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section contacts-order">
+    <h2>Как получить заказ</h2>
+    <div class="contacts-order__grid">
+      <div class="contacts-order__card">
+        <h3>Делёнки пионов</h3>
+        <p><strong>Курск</strong><br>Получение и отправка делёнок — по предварительной договорённости.</p>
+        <p><strong>Другие регионы России</strong><br>Возможность и способ отправки согласовываются индивидуально.</p>
+        <a class="contacts-order__link" href="/catalog/">Смотреть каталог →</a>
+      </div>
+      <div class="contacts-order__card">
+        <div class="contacts-order__card-head">
+          <h3>Букеты пионов</h3>
+          <span class="badge">В период срезки</span>
+        </div>
+        <p>В Курске возможны самовывоз и доставка букетов по предварительному согласованию.</p>
+        <a class="contacts-order__link" href="#contacts">Уточнить наличие →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-section contacts-platforms">
+    <h2>Мы на площадках</h2>
+    <div class="contacts-platforms__grid">
+      <a class="contacts-platform" href="{{ site.data.contacts.vk.url }}" target="_blank" rel="noopener noreferrer">
+        <span class="contacts-platform__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="9" r="2.3"/><circle cx="15.5" cy="9" r="2.3"/><path d="M4.5 20c.6-3.3 3-5.5 7.5-5.5s6.9 2.2 7.5 5.5"/></svg>
+        </span>
+        <span class="contacts-platform__body">
+          <span class="contacts-platform__title">ВКонтакте</span>
+          <span class="contacts-platform__desc">Новости питомника, фотографии пионов и актуальная информация.</span>
+        </span>
+        <span class="contacts-platform__cta">Перейти в сообщество →</span>
+      </a>
+      <a class="contacts-platform" href="{{ site.data.contacts.avito.url }}" target="_blank" rel="noopener noreferrer">
+        <span class="contacts-platform__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10l3 6-8 10L4 10z"/><path d="M4 10h16"/></svg>
+        </span>
+        <span class="contacts-platform__body">
+          <span class="contacts-platform__title">Авито</span>
+          <span class="contacts-platform__desc">Актуальные объявления питомника и предложения.</span>
+        </span>
+        <span class="contacts-platform__cta">Смотреть объявления →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="contacts-final">
+    <div class="contacts-final__inner">
+      <h2>Ищете конкретный сорт пиона?</h2>
+      <p>Посмотрите сорта в нашем каталоге или напишите нам — подскажем по наличию и ответим на вопросы.</p>
+      <div class="contacts-final__actions">
+        <a class="btn btn--primary" href="/catalog/">Смотреть каталог</a>
+        <a class="btn btn--outline" href="#contacts">Связаться →</a>
+      </div>
     </div>
   </section>
 
