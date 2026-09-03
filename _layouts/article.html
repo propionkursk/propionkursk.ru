@@ -6,6 +6,7 @@
   <title>{{ page.title }} — ПроПионыКурск</title>
   <meta name="description" content="{{ page.description | default: page.title }}">
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  {% if page.stub %}<meta name="robots" content="noindex, follow">{% endif %}
   {% include favicon.html %}
   <link rel="stylesheet" href="/assets/css/main.css">
 </head>

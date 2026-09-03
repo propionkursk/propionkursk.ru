@@ -1,8 +1,109 @@
 {% comment %}
-  Раздел 17.13: полноценный footer с навигацией не финализирован — это
-  временный минимальный footer, общий для всех типов страниц.
+  SITE-FOOTER-001 — глобальный footer для всего сайта. Пункты навигации
+  продублированы для desktop (открытые колонки) и mobile (accordion на
+  <details>, без JS) — тот же приём, что и в site-header.html.
 {% endcomment %}
 <footer class="site-footer">
-  <p>&copy; {{ site.time | date: '%Y' }} ПроПионыКурск</p>
-  <p><a href="https://wa.me/{{ site.data.contacts.whatsapp_number }}">WhatsApp</a> · <a href="https://t.me/{{ site.data.contacts.telegram_username }}">Telegram</a> · {{ site.data.contacts.phone_display }}</p>
+  <div class="site-footer__inner">
+    <div class="site-footer__brand">
+      <a class="site-footer__logo" href="/">
+        <img src="/img/brand/propionkursk-logo-light.png" alt="propionkursk.ru — питомник пионов" width="1759" height="491">
+      </a>
+      <p class="site-footer__region">Курская область</p>
+    </div>
+
+    <nav class="site-footer__nav" aria-label="Навигация в футере">
+      <div class="site-footer__group">
+        <p class="site-footer__heading">Каталог</p>
+        <ul>
+          <li><a href="/catalog/">Все пионы</a></li>
+          <li><a href="/catalog/herbaceous/">Травянистые пионы</a></li>
+          <li><a href="/catalog/ito/">ИТО-пионы</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__group">
+        <p class="site-footer__heading">О пионах</p>
+        <ul>
+          <li><a href="/o-pionah/">Всё о пионах</a></li>
+          <li><a href="/o-pionah/vidy-i-gruppy/">Виды и группы пионов</a></li>
+          <li><a href="/articles/tsvetenie/">Цветение пионов</a></li>
+          <li><a href="/o-pionah/istoriya-selekciya/">История и селекция</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__group">
+        <p class="site-footer__heading">Советы</p>
+        <ul>
+          <li><a href="/articles/">Все советы</a></li>
+          <li><a href="/articles/posadka/">Посадка пионов</a></li>
+          <li><a href="/articles/uhod/">Уход за пионами</a></li>
+          <li><a href="/articles/podkormka/">Подкормка пионов</a></li>
+          <li><a href="/articles/delenie/">Пересадка и деление</a></li>
+          <li><a href="/articles/bolezni/">Болезни и проблемы</a></li>
+          <li><a href="/articles/zima/">Подготовка к зиме</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__group">
+        <p class="site-footer__heading">О питомнике</p>
+        <ul>
+          <li><a href="/o-pitomnike/">О питомнике</a></li>
+        </ul>
+      </div>
+      <div class="site-footer__group">
+        <p class="site-footer__heading">Контакты</p>
+        <ul>
+          <li><a href="/contacts/">Контакты</a></li>
+          <li><a href="{{ site.data.contacts.vk_url }}" target="_blank" rel="noopener noreferrer">VK</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="site-footer__mobile-nav">
+      <details class="site-footer__accordion">
+        <summary>Каталог</summary>
+        <ul>
+          <li><a href="/catalog/">Все пионы</a></li>
+          <li><a href="/catalog/herbaceous/">Травянистые пионы</a></li>
+          <li><a href="/catalog/ito/">ИТО-пионы</a></li>
+        </ul>
+      </details>
+      <details class="site-footer__accordion">
+        <summary>О пионах</summary>
+        <ul>
+          <li><a href="/o-pionah/">Всё о пионах</a></li>
+          <li><a href="/o-pionah/vidy-i-gruppy/">Виды и группы пионов</a></li>
+          <li><a href="/articles/tsvetenie/">Цветение пионов</a></li>
+          <li><a href="/o-pionah/istoriya-selekciya/">История и селекция</a></li>
+        </ul>
+      </details>
+      <details class="site-footer__accordion">
+        <summary>Советы</summary>
+        <ul>
+          <li><a href="/articles/">Все советы</a></li>
+          <li><a href="/articles/posadka/">Посадка пионов</a></li>
+          <li><a href="/articles/uhod/">Уход за пионами</a></li>
+          <li><a href="/articles/podkormka/">Подкормка пионов</a></li>
+          <li><a href="/articles/delenie/">Пересадка и деление</a></li>
+          <li><a href="/articles/bolezni/">Болезни и проблемы</a></li>
+          <li><a href="/articles/zima/">Подготовка к зиме</a></li>
+        </ul>
+      </details>
+      <details class="site-footer__accordion">
+        <summary>О питомнике</summary>
+        <ul>
+          <li><a href="/o-pitomnike/">О питомнике</a></li>
+        </ul>
+      </details>
+      <details class="site-footer__accordion">
+        <summary>Контакты</summary>
+        <ul>
+          <li><a href="/contacts/">Контакты</a></li>
+          <li><a href="{{ site.data.contacts.vk_url }}" target="_blank" rel="noopener noreferrer">VK</a></li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <div class="site-footer__legal">
+    <p>&copy; propionkursk.ru · <a href="/privacy/">Политика конфиденциальности</a> · <a href="/terms/">Пользовательское соглашение</a></p>
+  </div>
 </footer>
