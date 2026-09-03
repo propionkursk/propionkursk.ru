@@ -42,9 +42,21 @@
     </ol>
   </nav>
 
-  <section class="catalog-intro">
-    <h1>{{ group_title | default: "Каталог пионов" }}</h1>
-  </section>
+  {% if page.group %}
+    <section class="catalog-intro">
+      <h1>{{ group_title }}</h1>
+    </section>
+  {% else %}
+    <section class="catalog-intro catalog-intro--banner">
+      <div class="catalog-intro__media">
+        <img src="/img/catalog/catalog-banner.png" alt="" loading="eager">
+        <div class="catalog-intro__content">
+          <h1>Каталог пионов</h1>
+          <p>Подборка лучших сортов травянистых и ИТО-пионов из нашей коллекции. Собственные делёнки и свежая срезка.</p>
+        </div>
+      </div>
+    </section>
+  {% endif %}
 
   {% unless page.group %}
     <section class="catalog-groups">

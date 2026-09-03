@@ -470,29 +470,62 @@ p.final-cta { max-width: 1240px; margin: 24px auto 40px; padding: 0 20px; }
 section.catalog-intro h1 { font-size: var(--text-h1); margin: 0 0 8px; }
 .catalog-count { color: var(--muted-gray); font-size: 14px; margin: 0 0 16px; }
 
+/* Баннер каталога — та же схема, что и у блоков на главной: фото на всю
+   ширину, текст поверх подготовленной светлой зоны изображения. */
+section.catalog-intro--banner { padding-top: 0; padding-bottom: 0; }
+section.catalog-groups { padding-top: 24px; }
+.catalog-intro__media { position: relative; border-radius: var(--radius); overflow: hidden; }
+.catalog-intro__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 4 / 3.4;
+  object-fit: cover;
+  object-position: center;
+}
+@media (min-width: 900px) {
+  .catalog-intro__media img { aspect-ratio: 1975 / 566; }
+}
+.catalog-intro__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 20px;
+  max-width: 320px;
+}
+.catalog-intro__content h1 { font-size: var(--text-h3); line-height: var(--lh-h3); font-weight: var(--weight-h3); margin: 0 0 8px; }
+.catalog-intro__content p { font-size: var(--text-caption); line-height: var(--lh-caption); color: var(--charcoal); margin: 0; }
+@media (min-width: 900px) {
+  .catalog-intro__content { max-width: 420px; padding: 0 0 0 40px; }
+  .catalog-intro__content h1 { font-size: var(--text-h1); line-height: var(--lh-h1); font-weight: var(--weight-h1); margin: 0 0 12px; }
+  .catalog-intro__content p { font-size: var(--text-body); line-height: var(--lh-body); max-width: 380px; }
+}
+
 .catalog-groups { display: flex; flex-wrap: wrap; gap: 16px; }
 .catalog-groups__tile {
-  flex: 1 1 260px;
+  flex: 1 1 300px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 16px;
+  padding: 22px;
   text-decoration: none;
   color: var(--charcoal);
 }
 .catalog-groups__tile img {
-  width: 72px;
-  height: 72px;
+  width: 96px;
+  height: 96px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
   flex-shrink: 0;
 }
-.catalog-groups__tile h2 { font-size: var(--text-h4); line-height: var(--lh-h4); font-weight: var(--weight-h4); margin: 0 0 2px; }
-.catalog-groups__tile p { font-size: 13px; color: var(--muted-gray); margin: 0; }
-.catalog-groups__tile .arrow { margin-left: auto; color: var(--peony-green); font-size: 18px; }
+.catalog-groups__tile h2 { font-size: var(--text-h3); line-height: var(--lh-h3); font-weight: var(--weight-h3); margin: 0 0 4px; }
+.catalog-groups__tile p { font-size: var(--text-caption); color: var(--muted-gray); margin: 0; }
+.catalog-groups__tile .arrow { margin-left: auto; color: var(--peony-green); font-size: 22px; }
 
 .catalog-grid {
   display: grid;
