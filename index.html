@@ -24,7 +24,7 @@
         <p class="hero-home__subtitle">Выращиваем сорта, проверенные нашим климатом. Делимся опытом и помогаем создать ваш сад мечты.</p>
         <div class="hero-home__cta">
           <a class="btn btn--primary" href="/catalog/">Смотреть каталог</a>
-          <a class="btn btn--outline" href="#about">О питомнике</a>
+          <a class="btn btn--outline" href="/o-pitomnike/">О питомнике</a>
         </div>
 
         <ul class="hero-home__trust">
@@ -104,44 +104,27 @@
     </p>
   </section>
 
-  <section class="home-section" id="about">
-    <h2>О нас</h2>
-    <div class="info-card">
-      <p>Мы специализируемся на продаже делёнок элитных пионов, выращенных с заботой и вниманием в нашем собственном саду. В нашем ассортименте — только проверенные сорта, крепкие и здоровые растения, которые радуют пышным цветением.</p>
-      <p>Каждая делёнка проходит тщательный отбор — мы предлагаем только то, что выбрали бы для своего участка. Заказы аккуратно упаковываем и отправляем почтой по всей России.</p>
-      <p>Для наших покупателей — регулярные акции, подарки и интересные предложения. Всегда готовы помочь с выбором, проконсультировать по посадке и уходу за пионами.</p>
-      <p>Присоединяйтесь к сообществу любителей пионов — сделаем ваш сад ярче и красивее вместе!</p>
-    </div>
-  </section>
+  {% include home-feature.html slides=site.data.home_features.articles.slides section_label=site.data.home_features.articles.section_label modifier=site.data.home_features.articles.modifier %}
 
-  <section class="home-section" id="reviews">
-    <h2>Отзывы</h2>
-    <div class="info-card">
-      <p>«Милая и дружелюбная хозяйка продаёт прекрасные пионы! Много выбора на любой вкус. Любители пионов оценят данное место и вернутся за новыми видами снова! Рекомендую!»</p>
-    </div>
-  </section>
+  {% include home-feature.html slides=site.data.home_features.about.slides section_label=site.data.home_features.about.section_label modifier=site.data.home_features.about.modifier %}
 
-  <section class="home-section" id="contacts">
-    <h2>Контакты</h2>
-    <div class="info-card home-contacts">
-      <p><strong>Телефон:</strong> <a href="tel:+79151128893">+7 915 112 8893</a></p>
-      <p><strong>WhatsApp:</strong> <a href="https://wa.me/79151128893" target="_blank" rel="noopener noreferrer">написать</a></p>
-      <p><strong>Telegram:</strong> <a href="https://t.me/Nadezhdapion" target="_blank" rel="noopener noreferrer">написать</a></p>
-      <p><strong>VK:</strong> <a href="https://vk.ru/propeonykursk" target="_blank" rel="noopener noreferrer">написать</a></p>
-      <p><strong>Email:</strong> <a href="mailto:propionkursk@yandex.ru">propionkursk@yandex.ru</a></p>
-      <p><strong>Адрес:</strong> г. Курск, 1-ая Моква</p>
-    </div>
-  </section>
-
-  <section class="home-section" id="privacy">
-    <h2>Политика конфиденциальности</h2>
-    <div class="info-card">
-      <p>Настоящая политика конфиденциальности определяет порядок обработки и защиты персональных данных, которые могут быть переданы пользователями при использовании контактной информации, размещённой на сайте. Мы размещаем на сайте контактные данные (имя, номер телефона, email, мессенджеры), которые вы можете использовать для связи с нами. При использовании этих контактов вы добровольно передаёте свои персональные данные напрямую нам или соответствующим мессенджерам.</p>
-      <p>Мы не собираем персональные данные автоматически, не передаём их третьим лицам и не используем для рассылки рекламы. Обратите внимание, что при использовании мессенджеров WhatsApp и Telegram ваши данные обрабатываются в соответствии с политиками конфиденциальности этих сервисов, и мы не контролируем их действия с вашими данными.</p>
-      <p>Вы имеете право отказаться от передачи своих данных и прекратить использование контактных каналов в любое время.</p>
-    </div>
-  </section>
+  {% comment %}
+    HOME-PRODUCTS-001 раздел 4: сезонность влияет только на порядок двух
+    постоянных продуктов (Делёнки / Срезка) — весной срезка идёт первой,
+    в остальные сезоны первыми идут делёнки. Порядок определяется на сборке.
+  {% endcomment %}
+  {% assign build_month = site.time | date: "%-m" %}
+  {% assign is_spring = false %}
+  {% if build_month == "3" or build_month == "4" or build_month == "5" %}{% assign is_spring = true %}{% endif %}
+  {% assign products = site.data.home_features.products.slides %}
+  {% if is_spring %}
+    {% assign cut_arr = products | where: "id", "cut" %}
+    {% assign division_arr = products | where: "id", "division" %}
+    {% assign products = cut_arr | concat: division_arr %}
+  {% endif %}
+  {% include home-feature.html slides=products section_label=site.data.home_features.products.section_label modifier=site.data.home_features.products.modifier %}
 
   {% include site-footer.html %}
+  <script src="/assets/js/home-feature.js" defer></script>
 </body>
 </html>

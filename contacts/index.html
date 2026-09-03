@@ -1,0 +1,37 @@
+---
+permalink: /contacts/
+title: "Контакты"
+description: "Страница контактов propionkursk.ru обновляется."
+---
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} — ПроПионыКурск</title>
+  <meta name="description" content="{{ page.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  {% include favicon.html %}
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+  {% include site-header.html %}
+
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+    <ol>
+      <li><a href="/">Главная</a></li>
+      <li aria-current="page">Контакты</li>
+    </ol>
+  </nav>
+
+  <section class="home-section">
+    <h1>Контакты</h1>
+    <div class="info-card">
+      <p class="placeholder-text">Страница контактов обновляется.</p>
+      <p>Актуальные способы связи — WhatsApp и Telegram — указаны в футере сайта.</p>
+    </div>
+  </section>
+
+  {% include site-footer.html %}
+</body>
+</html>

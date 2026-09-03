@@ -1,0 +1,48 @@
+{% comment %}
+  HOME-FEATURE-FINAL-001 — общий компонент для нижних info-commerce блоков
+  главной (Полезное о пионах / О питомнике / Продукты питомника). Один слайд
+  рендерится статично, без controls; при >1 слайде автоматически появляется
+  carousel (стрелки, точки, автопрокрутка) без изменения дизайна блока.
+  include.slides — массив слайдов (см. _data/home_features.yml), заданный
+  напрямую вызывающей стороной, чтобы можно было переупорядочить (сезонность).
+{% endcomment %}
+{% assign slides = include.slides %}
+{% assign multi = false %}
+{% if slides.size > 1 %}{% assign multi = true %}{% endif %}
+<section class="home-feature home-feature--{{ include.modifier }}" aria-label="{{ include.section_label }}"{% if multi %} data-home-feature data-multi{% endif %}>
+  <div class="home-feature__viewport">
+    <div class="home-feature__track">
+      {% for slide in slides %}
+        <article class="home-feature__slide{% if forloop.first %} is-active{% endif %}">
+          <div class="home-feature__media">
+            <picture>
+              <source media="(min-width: 900px)" srcset="{{ slide.image_desktop }}">
+              <img class="home-feature__img" src="{{ slide.image_mobile }}" alt="{{ slide.alt }}" loading="lazy" width="960" height="1200">
+            </picture>
+          </div>
+          <div class="home-feature__content">
+            <p class="home-feature__eyebrow">{{ slide.eyebrow }}</p>
+            <h2 class="home-feature__title">{{ slide.title }}</h2>
+            <p class="home-feature__desc">{{ slide.description }}</p>
+            <a class="btn btn--primary home-feature__cta" href="{{ slide.cta_href }}">{{ slide.cta_text }}</a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+  {% if multi %}
+    <div class="home-feature__controls">
+      <button type="button" class="home-feature__arrow home-feature__arrow--prev" aria-label="Предыдущий слайд">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <div class="home-feature__dots" role="tablist">
+        {% for slide in slides %}
+          <button type="button" class="home-feature__dot{% if forloop.first %} is-active{% endif %}" role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" aria-label="Слайд {{ forloop.index }}"></button>
+        {% endfor %}
+      </div>
+      <button type="button" class="home-feature__arrow home-feature__arrow--next" aria-label="Следующий слайд">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  {% endif %}
+</section>

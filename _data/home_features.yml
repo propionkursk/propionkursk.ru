@@ -1,0 +1,53 @@
+# HOME-FEATURE-FINAL-001 / HOME-FEATURE-MOBILE-001
+# Контент нижних info-commerce блоков главной. Тексты и destination-ссылки
+# заданы согласно утверждённому документу; carousel включается автоматически,
+# когда у блока больше одного слайда (см. _includes/home-feature.html).
+
+articles:
+  section_label: "Полезное о пионах"
+  modifier: "articles"
+  slides:
+    - eyebrow: "ПОЛЕЗНОЕ О ПИОНАХ"
+      title: "Почему пионы не цветут?"
+      description: "Разбираем основные причины, по которым пион не зацветает, и что можно сделать, чтобы помочь растению."
+      cta_text: "Читать статью"
+      cta_href: "/articles/pochemu-ne-cvetut/"
+      image_desktop: "/img/home-features/peonies-not-blooming-desktop.webp"
+      image_mobile: "/img/home-features/peonies-not-blooming-mobile.webp"
+      alt: "Цветущие пионы в посадках питомника"
+
+about:
+  section_label: "О питомнике"
+  modifier: "about"
+  slides:
+    - eyebrow: "О ПИТОМНИКЕ"
+      title: "Пионы, выращенные нами"
+      description: "Выращиваем пионы в Курской области, наблюдаем за сортами в наших условиях и делимся собственным опытом."
+      cta_text: "О питомнике"
+      cta_href: "/o-pitomnike/"
+      image_desktop: "/img/home-features/nursery-desktop.webp"
+      image_mobile: "/img/home-features/nursery-mobile.webp"
+      alt: "Цветущие пионы в питомнике в Курской области"
+
+products:
+  section_label: "Продукты питомника"
+  modifier: "products"
+  slides:
+    - id: division
+      eyebrow: "ДЕЛЁНКИ ПИОНОВ"
+      title: "Пионы для вашего сада"
+      description: "Делёнки пионов из нашего питомника — выбирайте сорта для посадки и будущего цветения в вашем саду."
+      cta_text: "Смотреть делёнки"
+      cta_href: "/catalog/"
+      image_desktop: "/img/home-features/peony-division-desktop.webp"
+      image_mobile: "/img/home-features/peony-division-mobile.webp"
+      alt: "Делёнка пиона с корнями и почками"
+    - id: cut
+      eyebrow: "СВЕЖИЕ ПИОНЫ"
+      title: "Пионы на срезку"
+      description: "Свежие пионы из нашего питомника — в сезон цветения собираем их для букетов и особенных моментов."
+      cta_text: "Подробнее"
+      cta_href: "/srezka/"
+      image_desktop: "/img/home-features/cut-peonies-desktop.png"
+      image_mobile: "/img/home-features/cut-peonies-mobile.webp"
+      alt: "Букет срезанных пионов из питомника"
