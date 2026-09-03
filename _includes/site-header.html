@@ -1,9 +1,123 @@
 {% comment %}
-  Раздел 17.13: полноценная шапка с навигацией не финализирована — это
-  временный минимальный header, общий для всех типов страниц.
+  SITE-HEADER-001 — глобальный header для всего сайта.
+  Параметр include.nav_section подсвечивает активный пункт верхнего меню:
+  "catalog" | "about-peonies" | "tips". Передаётся из layout или конкретной
+  страницы; если не передан — берётся page.nav_section, иначе ничего не активно.
 {% endcomment %}
-<header class="site-header">
-  <div class="container">
-    <nav><a href="/">ПроПионыКурск</a></nav>
+{% assign nav_section = include.nav_section | default: page.nav_section %}
+<header class="site-header" id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/">
+      <img class="site-header__logo-img" src="/img/brand/propionkursk-logo.png" alt="propionkursk.ru — питомник пионов" width="1759" height="491">
+    </a>
+
+    <nav class="site-header__nav" aria-label="Основная навигация">
+      <div class="site-header__item">
+        <button class="site-header__link{% if nav_section == "catalog" %} is-active{% endif %}" type="button" aria-expanded="false" aria-haspopup="true">
+          Каталог
+          <svg class="site-header__chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+        </button>
+        <ul class="site-header__menu" role="menu">
+          <li role="none"><a role="menuitem" href="/catalog/">Все пионы</a></li>
+          <li role="none"><a role="menuitem" href="/catalog/herbaceous/">Травянистые пионы</a></li>
+          <li role="none"><a role="menuitem" href="/catalog/ito/">ИТО-пионы</a></li>
+        </ul>
+      </div>
+
+      <div class="site-header__item">
+        <button class="site-header__link{% if nav_section == "about-peonies" %} is-active{% endif %}" type="button" aria-expanded="false" aria-haspopup="true">
+          О пионах
+          <svg class="site-header__chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+        </button>
+        <ul class="site-header__menu" role="menu">
+          <li role="none"><a role="menuitem" href="/o-pionah/">Всё о пионах</a></li>
+          <li role="none"><a role="menuitem" href="/o-pionah/vidy-i-gruppy/">Виды и группы пионов</a></li>
+          <li role="none"><a role="menuitem" href="/articles/tsvetenie/">Цветение пионов</a></li>
+          <li role="none"><a role="menuitem" href="/o-pionah/istoriya-selekciya/">История и селекция</a></li>
+        </ul>
+      </div>
+
+      <div class="site-header__item">
+        <button class="site-header__link{% if nav_section == "tips" %} is-active{% endif %}" type="button" aria-expanded="false" aria-haspopup="true">
+          Советы
+          <svg class="site-header__chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+        </button>
+        <ul class="site-header__menu" role="menu">
+          <li role="none"><a role="menuitem" href="/articles/">Все советы</a></li>
+          <li role="none"><a role="menuitem" href="/articles/posadka/">Посадка пионов</a></li>
+          <li role="none"><a role="menuitem" href="/articles/uhod/">Уход за пионами</a></li>
+          <li role="none"><a role="menuitem" href="/articles/podkormka/">Подкормка пионов</a></li>
+          <li role="none"><a role="menuitem" href="/articles/delenie/">Пересадка и деление</a></li>
+          <li role="none"><a role="menuitem" href="/articles/bolezni/">Болезни и проблемы</a></li>
+          <li role="none"><a role="menuitem" href="/articles/zima/">Подготовка к зиме</a></li>
+        </ul>
+      </div>
+
+      <a class="site-header__link site-header__link--plain" href="/#about">О питомнике</a>
+      <a class="site-header__link site-header__link--plain" href="/#contacts">Контакты</a>
+    </nav>
+
+    <div class="site-header__actions">
+      <button class="site-header__search" type="button" aria-label="Поиск по сайту">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="M21 21l-4.3-4.3"/>
+        </svg>
+      </button>
+      <a class="btn btn--primary site-header__cta" href="/#contacts">Связаться с нами</a>
+      <button class="site-header__burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="site-mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="site-header__mobile" id="site-mobile-menu" hidden>
+    <nav aria-label="Мобильная навигация">
+      <div class="site-header__mobile-group">
+        <button class="site-header__mobile-toggle" type="button" aria-expanded="false">
+          Каталог
+          <svg class="site-header__chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+        </button>
+        <ul class="site-header__mobile-submenu" hidden>
+          <li><a href="/catalog/">Все пионы</a></li>
+          <li><a href="/catalog/herbaceous/">Травянистые пионы</a></li>
+          <li><a href="/catalog/ito/">ИТО-пионы</a></li>
+        </ul>
+      </div>
+
+      <div class="site-header__mobile-group">
+        <button class="site-header__mobile-toggle" type="button" aria-expanded="false">
+          О пионах
+          <svg class="site-header__chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+        </button>
+        <ul class="site-header__mobile-submenu" hidden>
+          <li><a href="/o-pionah/">Всё о пионах</a></li>
+          <li><a href="/o-pionah/vidy-i-gruppy/">Виды и группы пионов</a></li>
+          <li><a href="/articles/tsvetenie/">Цветение пионов</a></li>
+          <li><a href="/o-pionah/istoriya-selekciya/">История и селекция</a></li>
+        </ul>
+      </div>
+
+      <div class="site-header__mobile-group">
+        <button class="site-header__mobile-toggle" type="button" aria-expanded="false">
+          Советы
+          <svg class="site-header__chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+        </button>
+        <ul class="site-header__mobile-submenu" hidden>
+          <li><a href="/articles/">Все советы</a></li>
+          <li><a href="/articles/posadka/">Посадка пионов</a></li>
+          <li><a href="/articles/uhod/">Уход за пионами</a></li>
+          <li><a href="/articles/podkormka/">Подкормка пионов</a></li>
+          <li><a href="/articles/delenie/">Пересадка и деление</a></li>
+          <li><a href="/articles/bolezni/">Болезни и проблемы</a></li>
+          <li><a href="/articles/zima/">Подготовка к зиме</a></li>
+        </ul>
+      </div>
+
+      <a class="site-header__mobile-link" href="/#about">О питомнике</a>
+      <a class="site-header__mobile-link" href="/#contacts">Контакты</a>
+      <a class="btn btn--primary site-header__mobile-cta" href="/#contacts">Связаться с нами</a>
+    </nav>
   </div>
 </header>
+<script src="/assets/js/site-header.js" defer></script>

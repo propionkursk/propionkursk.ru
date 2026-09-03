@@ -1,0 +1,48 @@
+---
+permalink: /o-pionah/
+title: "Всё о пионах"
+description: "Познавательные материалы о пионах — виды, цветение, история и селекция."
+nav_section: about-peonies
+---
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} — ПроПионыКурск</title>
+  <meta name="description" content="{{ page.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  {% include favicon.html %}
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+  {% include site-header.html nav_section=page.nav_section %}
+
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+    <ol>
+      <li><a href="/">Главная</a></li>
+      <li aria-current="page">Всё о пионах</li>
+    </ol>
+  </nav>
+
+  <section class="home-section">
+    <h1>Всё о пионах</h1>
+    <div class="info-grid">
+      <a class="info-card" href="/o-pionah/vidy-i-gruppy/" style="text-decoration: none; color: inherit;">
+        <h2>Виды и группы пионов</h2>
+        <p class="placeholder-text">Материал готовится</p>
+      </a>
+      <a class="info-card" href="/articles/tsvetenie/" style="text-decoration: none; color: inherit;">
+        <h2>Цветение пионов</h2>
+        <p class="placeholder-text">Материал готовится</p>
+      </a>
+      <a class="info-card" href="/o-pionah/istoriya-selekciya/" style="text-decoration: none; color: inherit;">
+        <h2>История и селекция</h2>
+        <p class="placeholder-text">Материал готовится</p>
+      </a>
+    </div>
+  </section>
+
+  {% include site-footer.html %}
+</body>
+</html>

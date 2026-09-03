@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
-  {% include site-header.html %}
+  {% assign nav_section = page.nav_section | default: "tips" %}
+  {% include site-header.html nav_section=nav_section %}
 
   <nav class="breadcrumbs" aria-label="Хлебные крошки">
     <ol>
