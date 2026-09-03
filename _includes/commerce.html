@@ -37,13 +37,17 @@
       </div>
       {% if cta_text %}
         <div class="commerce__action">
-          {% assign wa_message = "Здравствуйте, интересует делёнка " | append: v.name_ru %}
-          <a
-            class="btn btn--primary"
-            href="https://wa.me/{{ site.data.contacts.whatsapp.value }}?text={{ wa_message | url_encode }}"
-            target="_blank"
-            rel="noopener noreferrer"
-          >{{ cta_text }}</a>
+          {% if status == "in_stock" %}
+            <a class="btn btn--primary" href="/contacts/">{{ cta_text }}</a>
+          {% else %}
+            {% assign wa_message = "Здравствуйте, интересует делёнка " | append: v.name_ru %}
+            <a
+              class="btn btn--primary"
+              href="https://wa.me/{{ site.data.contacts.whatsapp.value }}?text={{ wa_message | url_encode }}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >{{ cta_text }}</a>
+          {% endif %}
         </div>
       {% endif %}
     </div>
