@@ -677,6 +677,7 @@ section.catalog-groups { padding-top: 24px; }
 .home-benefits__icon { width: 40px; height: 40px; flex-shrink: 0; object-fit: contain; }
 .home-benefits__title { font-size: 14px; font-weight: 600; color: var(--charcoal); margin: 0 0 2px; line-height: 1.35; }
 .home-benefits__desc { font-size: 13px; font-weight: 400; color: var(--muted-gray); margin: 0; line-height: 1.45; }
+.home-benefits__link { display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit; }
 
 @media (min-width: 600px) and (max-width: 899px) {
   .home-benefits__list { grid-template-columns: 1fr 1fr; gap: 20px 24px; }
