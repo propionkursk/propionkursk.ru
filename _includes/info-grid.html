@@ -51,7 +51,7 @@
     </dl>
   </div>
 
-  <div class="info-card">
+  <div class="info-card info-grid__care">
     <h2>Особенности ухода</h2>
     {% if c.care %}
       <p>{{ c.care }}</p>
@@ -60,7 +60,7 @@
     {% endif %}
   </div>
 
-  <div class="info-card">
+  <div class="info-card info-grid__articles">
     <h2>Полезные статьи</h2>
     {% comment %}
       Раздел 17.6: персональная релевантность по сорту не финализирована —
@@ -74,7 +74,7 @@
     </ul>
   </div>
 
-  <div class="info-card">
+  <div class="info-card info-grid__faq">
     <h2>Часто задаваемые вопросы</h2>
     {% if v.faq and v.faq.size > 0 %}
       {% for item in v.faq %}
@@ -86,5 +86,36 @@
     {% else %}
       <p class="placeholder-text">Вопросы по сорту пока не собраны.</p>
     {% endif %}
+  </div>
+
+  {% comment %}
+    Похожие сорта встроены в ту же сетку (не отдельная section), чтобы
+    занять место под короткими карточками «Особенности ухода» и «Полезные
+    статьи» и заканчиваться на одном уровне с «Часто задаваемыми вопросами».
+  {% endcomment %}
+  <div class="info-card info-grid__related" id="similar">
+    <h2>Похожие сорта</h2>
+    {% assign similar_ids = v.similar %}
+    {% assign has_similar = false %}
+    {% if similar_ids and similar_ids.size > 0 %}
+      <div class="related__row">
+        {% for sid in similar_ids %}
+          {% assign match = site.data.peonies | where: "id", sid | first %}
+          {% if match %}
+            {% assign has_similar = true %}
+            <article class="related__card">
+              <a href="/catalog/{{ match.group }}/{{ match.slug }}/" class="related__media">
+                <img src="{{ match.images.cover }}" alt="{{ match.name_ru }}" loading="lazy">
+              </a>
+              <h3>{{ match.name_ru }}</h3>
+              <a href="/catalog/{{ match.group }}/{{ match.slug }}/" class="btn btn--outline btn--small">Подробнее</a>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% unless has_similar %}
+      <p class="placeholder-text">Похожие сорта появятся здесь по мере наполнения каталога.</p>
+    {% endunless %}
   </div>
 </section>
