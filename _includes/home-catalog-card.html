@@ -10,7 +10,10 @@
     <img src="{{ v.images.cover }}" alt="{{ v.name_ru }}" loading="lazy">
   </div>
   <div class="home-card__body">
-    <h3>{{ v.name_ru }} <span class="catalog-card__original">{{ v.name_original }}</span></h3>
+    <h3 class="home-card__title">
+      {{ v.name_ru }}
+      <span class="home-card__original">{{ v.name_original }}</span>
+    </h3>
     <ul class="home-card__specs">
       {% if v.flower.form %}
         <li><img src="/img/icons/form.png" alt="" class="home-card__icon"> {{ site.data.labels.flower_form[v.flower.form] }}</li>
