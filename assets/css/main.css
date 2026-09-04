@@ -717,29 +717,31 @@ section.catalog-groups { padding-top: 24px; }
   .home-feature__track { transition: none; }
 }
 
-.home-feature__slide { position: relative; flex: 0 0 100%; }
-.home-feature__media { position: relative; }
+.home-feature__slide { position: relative; flex: 0 0 100%; min-height: 320px; }
+.home-feature__media { position: absolute; inset: 0; z-index: 0; }
 .home-feature__img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  aspect-ratio: 4 / 3.7;
   object-fit: cover;
   object-position: top center;
 }
 @media (min-width: 900px) {
-  .home-feature__img { aspect-ratio: 16 / 2.3; object-position: center; }
+  .home-feature__slide { min-height: 0; }
+  .home-feature__media { position: relative; inset: auto; }
+  .home-feature__img { height: auto; aspect-ratio: 16 / 2.3; object-position: center; }
 }
 
 .home-feature__content {
-  position: absolute;
-  top: 0; left: 0; right: 0;
+  position: relative;
+  z-index: 1;
   padding: 20px 20px;
   display: flex;
   flex-direction: column;
 }
 @media (min-width: 900px) {
   .home-feature__content {
+    position: absolute;
     inset: 0;
     justify-content: center;
     max-width: 380px;
