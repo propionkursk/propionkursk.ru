@@ -102,9 +102,12 @@
       - src: "/img/peonies/renato/full-bloom-01.webp"
         alt: "Пион Ренато, полный роспуск"
         type: "full_bloom"
-      - src: "/img/peonies/renato/full-bloom-02.webp"
-        alt: "Пион Ренато, полный роспуск"
-        type: "full_bloom"
+      - src: "/img/peonies/renato/bud-01.webp"
+        alt: "Пион Ренато, бутон"
+        type: "bud"
+      - src: "/img/peonies/renato/closeup-01.webp"
+        alt: "Пион Ренато, крупный план"
+        type: "closeup"
 
   sale:
     division:
