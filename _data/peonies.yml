@@ -1525,7 +1525,7 @@
     cut_flower: null
 
   images:
-    cover: "/img/white.jpg" # TODO: конвертировать в 1:1 webp → /img/peonies/white-peony/cover.webp
+    cover: "/img/peonies/white-peony/cover.webp"
     gallery: []
 
   sale:
