@@ -1,9 +1,7 @@
 ---
-layout: article
+layout: redirect
 permalink: /articles/posadka/
-title: "Посадка пионов"
-description: "Материал о посадке пионов готовится."
-stub: true
+title: "Посадка пионов — новый адрес"
+redirect_to: "/sovety/posadka/"
+sitemap: false
 ---
-
-Материал о посадке пионов готовится. Пока рекомендуем свериться со специализированными источниками по уходу за пионами или [написать нам](/contacts/) — поможем с конкретным вопросом.

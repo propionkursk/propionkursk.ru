@@ -1,0 +1,64 @@
+<svg viewBox="0 0 960 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="glubina-title glubina-desc">
+  <title id="glubina-title">Правильная и слишком глубокая посадка травянистого пиона</title>
+  <desc id="glubina-desc">Схема из трёх вариантов посадки травянистого пиона: слишком мелко, правильно (2,5–5 см от почек до поверхности почвы) и слишком глубоко.</desc>
+
+  <rect x="0" y="0" width="960" height="460" fill="#FAF9F5"/>
+
+  <!-- Panel 1: too shallow -->
+  <g transform="translate(20,0)">
+    <rect x="0" y="200" width="280" height="170" rx="6" fill="#E8EFE9"/>
+    <line x1="0" y1="200" x2="280" y2="200" stroke="#315C45" stroke-width="2"/>
+    <!-- root fan, fixed, starting exactly at the soil surface -->
+    <path d="M140,200 C132,225 122,250 112,278 M140,200 C140,230 140,260 140,290 M140,200 C148,225 158,250 168,278" fill="none" stroke="#203D30" stroke-width="3" stroke-linecap="round"/>
+    <!-- short neck connecting bud to surface -->
+    <line x1="140" y1="200" x2="140" y2="163" stroke="#203D30" stroke-width="3"/>
+    <!-- bud cluster fully exposed above the soil surface -->
+    <g transform="translate(140,148)">
+      <ellipse cx="0" cy="0" rx="15" ry="19" fill="#B96576"/>
+      <ellipse cx="-17" cy="9" rx="11" ry="14" fill="#B96576" opacity="0.85"/>
+      <ellipse cx="17" cy="9" rx="11" ry="14" fill="#B96576" opacity="0.85"/>
+    </g>
+    <text x="140" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#262B27">Слишком мелко</text>
+    <text x="140" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#6D746F">Почки открыты, выступают над почвой</text>
+  </g>
+
+  <!-- Panel 2: correct -->
+  <g transform="translate(340,0)">
+    <rect x="0" y="200" width="280" height="170" rx="6" fill="#E8EFE9"/>
+    <line x1="0" y1="200" x2="280" y2="200" stroke="#315C45" stroke-width="2"/>
+    <path d="M140,200 C132,225 122,250 112,278 M140,200 C140,230 140,260 140,290 M140,200 C148,225 158,250 168,278" fill="none" stroke="#203D30" stroke-width="3" stroke-linecap="round"/>
+    <line x1="140" y1="200" x2="140" y2="212" stroke="#203D30" stroke-width="3"/>
+    <g transform="translate(140,197)">
+      <ellipse cx="0" cy="0" rx="15" ry="19" fill="#315C45"/>
+      <ellipse cx="-17" cy="9" rx="11" ry="14" fill="#315C45" opacity="0.85"/>
+      <ellipse cx="17" cy="9" rx="11" ry="14" fill="#315C45" opacity="0.85"/>
+    </g>
+    <!-- depth bracket, from surface line down to bud top -->
+    <line x1="70" y1="200" x2="70" y2="216" stroke="#203D30" stroke-width="2"/>
+    <line x1="63" y1="200" x2="77" y2="200" stroke="#203D30" stroke-width="2"/>
+    <line x1="63" y1="216" x2="77" y2="216" stroke="#203D30" stroke-width="2"/>
+    <text x="90" y="212" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#203D30">2,5–5 см</text>
+    <text x="140" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#262B27">Правильно</text>
+    <text x="140" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#6D746F">Ориентир для травянистых пионов</text>
+  </g>
+
+  <!-- Panel 3: too deep -->
+  <g transform="translate(660,0)">
+    <rect x="0" y="200" width="280" height="170" rx="6" fill="#E8EFE9"/>
+    <line x1="0" y1="200" x2="280" y2="200" stroke="#315C45" stroke-width="2"/>
+    <path d="M140,200 C132,225 122,250 112,278 M140,200 C140,230 140,260 140,290 M140,200 C148,225 158,250 168,278" fill="none" stroke="#203D30" stroke-width="3" stroke-linecap="round"/>
+    <line x1="140" y1="200" x2="140" y2="282" stroke="#203D30" stroke-width="3"/>
+    <g transform="translate(140,267)">
+      <ellipse cx="0" cy="0" rx="15" ry="19" fill="#6D746F"/>
+      <ellipse cx="-17" cy="9" rx="11" ry="14" fill="#6D746F" opacity="0.85"/>
+      <ellipse cx="17" cy="9" rx="11" ry="14" fill="#6D746F" opacity="0.85"/>
+    </g>
+    <line x1="70" y1="200" x2="70" y2="282" stroke="#B96576" stroke-width="2" stroke-dasharray="4 4"/>
+    <text x="140" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#262B27">Слишком глубоко</text>
+    <text x="140" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#6D746F">Почки значительно заглублены</text>
+  </g>
+
+  <text x="480" y="192" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#315C45">уровень поверхности почвы после посадки</text>
+
+  <text x="480" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#6D746F">Диапазон 2,5–5 см — ориентир только для травянистых пионов, не для ИТО-гибридов</text>
+</svg>
