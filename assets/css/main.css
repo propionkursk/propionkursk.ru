@@ -615,6 +615,15 @@ section.catalog-groups { padding-top: 24px; }
 }
 .hero-home__overlay { order: 1; }
 
+@media (max-width: 899px) {
+  /* Desktop banner is a wide safe-zone crop (~55% blank space for the
+     overlaid text); on mobile the text isn't overlaid on this image
+     (it's stacked above instead), so the same wide crop just reads as
+     a mostly-empty photo. Crop tighter and biased right to show the
+     flower instead of the blank zone. */
+  .hero-home__img { aspect-ratio: 1 / 1; object-position: right center; }
+}
+
 @media (min-width: 900px) {
   .hero-home { padding: 0 20px 20px; }
   .hero-home__media { display: block; }
