@@ -309,6 +309,9 @@
       - src: "/img/peonies/hillary/bush-01.webp"
         alt: "Пион Хиллари, куст"
         type: "bush"
+      - src: "/img/peonies/hillary/division-01.webp"
+        alt: "Пион Хиллари, делёнка"
+        type: "division"
 
   sale:
     division:
@@ -496,6 +499,9 @@
       - src: "/img/peonies/command-performance/bouquet-01.webp"
         alt: "Пион Команд Перфоманс, букет"
         type: "bouquet"
+      - src: "/img/peonies/command-performance/division-01.webp"
+        alt: "Пион Команд Перфоманс, делёнка"
+        type: "division"
 
   sale:
     division:
@@ -586,6 +592,9 @@
       - src: "/img/peonies/alexander-fleming/full-bloom-02.webp"
         alt: "Пион Александр Флеминг, полный роспуск"
         type: "full_bloom"
+      - src: "/img/peonies/alexander-fleming/division-01.webp"
+        alt: "Пион Александр Флеминг, делёнка"
+        type: "division"
 
   sale:
     division:
@@ -687,6 +696,9 @@
       - src: "/img/peonies/jadwiga/full-bloom-05.webp"
         alt: "Пион Ядвига, полный роспуск"
         type: "full_bloom"
+      - src: "/img/peonies/jadwiga/division-01.webp"
+        alt: "Пион Ядвига, делёнка"
+        type: "division"
 
   sale:
     division:
@@ -884,6 +896,12 @@
       - src: "/img/peonies/myrtle-gentry/bouquet-01.webp"
         alt: "Пион Миртл Джентри, букет"
         type: "bouquet"
+      - src: "/img/peonies/myrtle-gentry/division-01.webp"
+        alt: "Пион Миртл Джентри, делёнка"
+        type: "division"
+      - src: "/img/peonies/myrtle-gentry/division-02.webp"
+        alt: "Пион Миртл Джентри, делёнка"
+        type: "division"
 
   sale:
     division:
@@ -1526,7 +1544,10 @@
 
   images:
     cover: "/img/peonies/white-peony/cover.webp"
-    gallery: []
+    gallery:
+      - src: "/img/peonies/white-peony/division-01.webp"
+        alt: "Белый пион, делёнка"
+        type: "division"
 
   sale:
     division:
